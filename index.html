@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxera Studio | Premium Ethnic Wear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: #fffdfa; color: #333; overflow-x: hidden; }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+
+        /* --- Navigation --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; background: #fff; position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 28px; color: #8e6d10; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; }
+        .login-btn {
+            background: #8e6d10; color: #fff; padding: 10px 25px; border-radius: 2px;
+            border: none; cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+        .login-btn:hover { background: #000; }
+
+        /* --- Hero Slider --- */
+        .slider { position: relative; width: 100%; height: 75vh; overflow: hidden; }
+        .slide {
+            position: absolute; width: 100%; height: 100%; opacity: 0;
+            transition: opacity 1.2s ease-in-out; background-size: cover; background-position: center;
+        }
+        .slide.active { opacity: 1; }
+        .slide-overlay { background: rgba(0,0,0,0.4); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .slide-text { text-align: center; color: #fff; }
+        .slide-text h2 { font-size: clamp(30px, 5vw, 60px); margin-bottom: 10px; }
+
+        /* --- Product Grid Setup --- */
+        .container { padding: 60px 8%; }
+        .layer-title { font-size: 30px; margin-bottom: 40px; text-align: center; color: #1a1a1a; letter-spacing: 1px; text-transform: uppercase; }
+        .layer-title::after { content: ''; display: block; width: 60px; height: 3px; background: #8e6d10; margin: 15px auto; }
+        
+        /* Grid fixed for 4 columns on desktop and 2 on mobile */
+        .product-grid {
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 25px; 
+            margin-bottom: 100px;
+        }
+        
+        .product-card {
+            background: #fff; transition: 0.4s; position: relative; border: 1px solid #f2f2f2; padding: 10px;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .product-img { width: 100%; height: 350px; object-fit: cover; background-color: #f9f9f9; }
+        .product-info { padding: 15px 5px; text-align: center; }
+        .product-name { font-size: 15px; font-weight: 500; margin-bottom: 5px; color: #222; }
+        .product-price { color: #8e6d10; font-weight: 700; font-size: 18px; }
+        .buy-now { 
+            margin-top: 15px; display: block; padding: 10px; 
+            background: #1a1a1a; color: #fff; text-decoration: none; font-size: 12px;
+            font-weight: 600; letter-spacing: 1px; transition: 0.3s;
+        }
+        .buy-now:hover { background: #8e6d10; }
+
+        /* --- Massive Footer --- */
+        footer { background: #000; color: #fff; padding: 120px 8% 60px; border-top: 5px solid #8e6d10; }
+        .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 80px; }
+        .footer-col h3 { color: #d4af37; font-size: 26px; margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-col p { line-height: 2; color: #bbb; font-size: 15px; margin-bottom: 20px; }
+        
+        .contact-links { margin-top: 30px; }
+        .c-item { 
+            display: flex; align-items: center; background: #0a0a0a; padding: 22px; 
+            margin-bottom: 15px; border-radius: 2px; text-decoration: none; color: #fff;
+            transition: 0.3s; border: 1px solid #1a1a1a;
+        }
+        .c-item:hover { background: #d4af37; color: #000; transform: translateX(10px); }
+        .c-item i { font-size: 24px; margin-right: 20px; width: 30px; text-align: center; }
+        
+        .footer-bottom { 
+            text-align: center; margin-top: 100px; padding-top: 50px; 
+            border-top: 1px solid #1a1a1a; color: #666; font-size: 13px; letter-spacing: 2px;
+        }
+
+        /* --- Auth Modal --- */
+        .modal {
+            display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: #fff; padding: 50px; width: 90%; max-width: 450px; text-align: center; border-radius: 4px;
+        }
+        .modal-content input { width: 100%; padding: 16px; margin-bottom: 15px; border: 1px solid #eee; outline: none; border-radius: 4px; }
+        .modal-content button { width: 100%; padding: 16px; background: #8e6d10; color: #fff; border: none; font-weight: 700; cursor: pointer; border-radius: 4px; }
+
+        /* Responsive Settings */
+        @media (max-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+            header, .container { padding-left: 5%; padding-right: 5%; }
+        }
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .product-img { height: 280px; }
+            footer { padding: 80px 5% 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">LUXERA STUDIO</div>
+        <button class="login-btn" onclick="openModal()">SIGN IN</button>
+    </header>
+
+    <section class="slider">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1610189013233-04983df82aa7?q=80&w=1600');">
+            <div class="slide-overlay"><div class="slide-text"><h2>Luxury Rediscovered</h2><p>Collection 2026</p></div></div>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1583391733959-1c5861b369c6?q=80&w=1600');">
+            <div class="slide-overlay"><div class="slide-text"><h2>Sylhet's Finest Heritage</h2><p>Exclusivity in Every Thread</p></div></div>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <h2 class="layer-title">GORGEOUS PARTY WEAR</h2>
+        <div class="product-grid" id="layer1"></div>
+
+        <h2 class="layer-title">EXCLUSIVE BRIDAL LAYER</h2>
+        <div class="product-grid" id="layer2"></div>
+
+        <h2 class="layer-title">LUXURY SILK SERIES</h2>
+        <div class="product-grid" id="layer3"></div>
+
+    </div>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3>LUXERA STUDIO</h3>
+                <p>The ultimate destination for premium ethnic wear in Sylhet. We specialize in bringing you the most sophisticated and high-quality sarees for your memorable moments.</p>
+                <div style="margin-top: 30px;">
+                    <p><strong>ADDRESS:</strong> Zindabazar, Sylhet City.</p>
+                    <p><strong>PHONE:</strong> +880 1961-454604</p>
+                    <p><strong>EMAIL:</strong> luxury.sareestudio@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>CONTACT CHANNELS</h3>
+                <div class="contact-links">
+                    <a href="https://wa.me/8801961454604" target="_blank" class="c-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WHATSAPP SUPPORT</a>
+                    <a href="https://m.me/luxera.saree.studio" target="_blank" class="c-item"><i class="fab fa-facebook-messenger" style="color:#0084FF"></i> FACEBOOK MESSENGER</a>
+                    <a href="mailto:luxury.sareestudio@gmail.com" class="c-item"><i class="fas fa-envelope" style="color:#EA4335"></i> GMAIL INQUIRY</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 LUXERA STUDIO | SYLHET, BANGLADESH | ALL RIGHTS RESERVED</div>
+    </footer>
+
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Welcome</h2>
+            <div id="loginForm">
+                <input type="text" placeholder="Email or Phone">
+                <input type="password" placeholder="Password">
+                <button onclick="closeModal()">LOG IN</button>
+                <p style="margin-top:20px; font-size:14px; color:#777;">New here? <span style="color:#8e6d10; cursor:pointer; font-weight:600;" onclick="toggleForm()">Create Account</span></p>
+            </div>
+            <div id="registerForm" style="display:none">
+                <input type="text" placeholder="Full Name">
+                <input type="number" placeholder="WhatsApp Number">
+                <input type="password" placeholder="New Password">
+                <button onclick="closeModal()">REGISTER</button>
+                <p style="margin-top:20px; font-size:14px; color:#777;">Have an account? <span style="color:#8e6d10; cursor:pointer; font-weight:600;" onclick="toggleForm()">Log In</span></p>
+            </div>
+            <p style="margin-top:20px; color:red; cursor:pointer; font-size: 13px;" onclick="closeModal()">CLOSE</p>
+        </div>
+    </div>
+
+    <script>
+        // Automatic Box Generator (8 boxes per layer)
+        function generateLayer(id) {
+            const grid = document.getElementById(id);
+            for (let i = 1; i <= 8; i++) {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1610189013233-04983df82aa7?q=80&w=500" class="product-img">
+                        <div class="product-info">
+                            <p class="product-name">Luxury Saree Item #${i}</p>
+                            <p class="product-price">৳ ${4000 + (i * 300)}</p>
+                            <a href="https://wa.me/8801961454604" class="buy-now">ORDER NOW</a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        generateLayer('layer1');
+        generateLayer('layer2');
+        generateLayer('layer3');
+
+        // Slider
+        let cur = 0;
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            slides[cur].classList.remove('active');
+            cur = (cur + 1) % slides.length;
+            slides[cur].classList.add('active');
+        }, 5000);
+
+        // Modal
+        function openModal() { document.getElementById('authModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('authModal').style.display = 'none'; }
+        function toggleForm() {
+            const l = document.getElementById('loginForm'), r = document.getElementById('registerForm'), t = document.getElementById('modalTitle');
+            if(l.style.display === 'none') { l.style.display='block'; r.style.display='none'; t.innerText='Log In'; }
+            else { l.style.display='none'; r.style.display='block'; t.innerText='Register'; }
+        }
+    </script>
+</body>
+</html>
