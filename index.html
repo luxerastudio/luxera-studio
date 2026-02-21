@@ -8,7 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; border: none; text-decoration: none; scroll-behavior: smooth; }
+        /* মোবাইলের জন্য হেডার ও টাইটেল ফিক্স */
+@media (max-width: 768px) {
+    header { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; }
+    .logo { font-size: 20px !important; margin-bottom: 10px !important; } 
+    .header-icons { display: flex !important; gap: 20px !important; justify-content: center !important; }
+    .header-icons span { display: none !important; } /* শুধু লোগো থাকবে, লেখা মুছে যাবে */
+    
+    /* টাইটেল ছোট ও এক লাইনে করা */
+    .section-title h2 { font-size: 18px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+}        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; border: none; text-decoration: none; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: #fffdfa; color: #1a1a1a; overflow-x: hidden; }
 
         /* --- Header: Premium & Responsive --- */
@@ -100,7 +109,15 @@
             footer { padding: 80px 8% 40px; }
             .hero { height: 350px; }
             .slide h2 { font-size: 28px; }
-        }
+            /* প্রোডাক্ট বক্স প্রিমিয়াম লুক */
+.card { 
+    border-radius: 12px !important; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; 
+    border: 1px solid #f0f0f0 !important;
+    padding: 8px !important;
+    margin-bottom: 15px !important;
+}
+.card img { border-radius: 10px !important; }        }
     </style>
 </head>
 <body>
