@@ -1,1 +1,229 @@
-file:///Users/das/Desktop/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxera Studio | Premium Ethnic Wear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: #fffdfa; color: #1a1a1a; overflow-x: hidden; }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+
+        /* --- Header & Search --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; background: #fff; position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); gap: 20px;
+        }
+        .logo { font-size: 26px; color: #8e6d10; letter-spacing: 2px; font-weight: 900; text-transform: uppercase; }
+        
+        .search-container { flex-grow: 1; max-width: 500px; position: relative; }
+        .search-bar {
+            width: 100%; padding: 12px 20px 12px 45px; border: 1px solid rgba(142, 109, 16, 0.2);
+            border-radius: 30px; background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(15px);
+            outline: none; transition: 0.3s;
+        }
+        .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #8e6d10; }
+
+        .auth-btn { 
+            background: linear-gradient(135deg, #d4af37, #8e6d10); color: #fff; 
+            padding: 10px 25px; border: none; cursor: pointer; font-weight: 600; 
+            border-radius: 25px; transition: 0.3s;
+        }
+
+        /* --- জীবন্ত বক্স এনিমেশন (Self-Floating) --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .container { padding: 40px 8% 80px; }
+        .layer-title { font-size: 28px; margin: 60px 0 35px; text-align: center; text-transform: uppercase; }
+        .layer-title::after { content: ''; display: block; width: 60px; height: 3px; background: #8e6d10; margin: 15px auto; }
+        
+        .product-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background: #fff; border: 1px solid #f2f2f2; padding: 20px; 
+            text-align: center; border-radius: 15px; position: relative;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            
+            /* স্বয়ংক্রিয় নড়াচড়া */
+            animation: float 4s ease-in-out infinite;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* আলাদা আলাদা টাইমিং যাতে সব একসাথে না নড়ে */
+        .product-card:nth-child(even) { animation-delay: 1s; }
+        .product-card:nth-child(odd) { animation-delay: 2s; }
+
+        /* মাউস নিলে এনিমেশন থেমে যাবে এবং বড় হবে */
+        .product-card:hover { 
+            animation-play-state: paused;
+            transform: translateY(-20px) scale(1.06);
+            box-shadow: 0 30px 60px rgba(142, 109, 16, 0.2);
+            border-color: #d4af37;
+        }
+
+        .img-placeholder { 
+            width: 100%; height: 350px; background: #fbfbfb; 
+            display: flex; align-items: center; justify-content: center; 
+            color: #ddd; border-radius: 10px; margin-bottom: 18px;
+            transition: 0.5s; border: 1px dashed #eee;
+        }
+
+        .product-card:hover .img-placeholder { transform: scale(0.96); border-color: #d4af37; background: #fff; }
+
+        .p-code { font-size: 11px; color: #888; font-weight: 600; }
+        .p-name { font-size: 16px; font-weight: 600; margin: 8px 0; }
+        .p-price { color: #8e6d10; font-weight: 700; font-size: 20px; margin-bottom: 15px; }
+
+        .order-btn {
+            display: block; width: 100%; padding: 12px; background: #1a1a1a; 
+            color: #fff; text-decoration: none; font-size: 12px; font-weight: 600;
+            border-radius: 8px; transition: 0.3s;
+        }
+        .product-card:hover .order-btn { background: #8e6d10; }
+
+        /* --- Footer --- */
+        footer { background: #000; color: #fff; padding: 100px 8% 50px; border-top: 5px solid #8e6d10; }
+        .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; }
+        .c-item { 
+            display: flex; align-items: center; background: #111; padding: 20px; 
+            text-decoration: none; color: #fff; border: 1px solid #222; transition: 0.4s; border-radius: 5px; margin-bottom: 10px;
+        }
+        .c-item:hover { background: #8e6d10; transform: translateX(12px); }
+        .c-item i { font-size: 24px; margin-right: 15px; width: 30px; text-align: center; }
+
+        /* --- Auth Modal --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
+        }
+        .modal-content { background: #fff; padding: 45px; width: 90%; max-width: 420px; text-align: center; border-radius: 20px; }
+        .modal-content input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; }
+        .modal-content button { width: 100%; padding: 15px; background: #8e6d10; color: #fff; border: none; cursor: pointer; border-radius: 10px; font-weight: 700; }
+
+        @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } header { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">LUXERA STUDIO</div>
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-bar" id="searchInput" placeholder="Search by Code (e.g. PARTY-101)..." onkeyup="searchProduct()">
+        </div>
+        <div class="user-info">
+            <span id="userNameDisplay" style="font-weight: 600; color: #8e6d10; margin-right: 10px;"></span>
+            <button class="auth-btn" id="authBtn" onclick="openModal()">SIGN IN / REGISTER</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="layer-title">GORGEOUS PARTY WEAR</h2>
+        <div class="product-grid" id="partyGrid"></div>
+
+        <h2 class="layer-title">EXCLUSIVE BRIDAL LAYER</h2>
+        <div class="product-grid" id="bridalGrid"></div>
+
+        <h2 class="layer-title">LUXURY SILK SERIES</h2>
+        <div class="product-grid" id="silkGrid"></div>
+        
+        <div id="noResults" style="display:none; text-align:center; padding: 80px; color: #999;">No Saree found!</div>
+    </div>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3>LUXERA STUDIO</h3>
+                <p>Premium Saree Boutique in Sylhet. Experience the art of luxury.</p>
+                <p><i class="fas fa-map-marker-alt" style="color:#d4af37"></i> Zindabazar, Sylhet</p>
+            </div>
+            <div class="footer-col">
+                <h3>CONTACT US</h3>
+                <div class="contact-links">
+                    <a href="https://wa.me/8801961454604" target="_blank" class="c-item"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+                    <a href="https://m.me/yourpage" target="_blank" class="c-item"><i class="fab fa-facebook-messenger"></i> MESSENGER</a>
+                    <a href="mailto:luxury.sareestudio@gmail.com" class="c-item"><i class="fas fa-envelope"></i> EMAIL</a>
+                    <a href="tel:+8801961454604" class="c-item"><i class="fas fa-phone-alt"></i> CALL NOW</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <h2>Create Account</h2>
+            <input type="text" id="nameInput" placeholder="Enter Full Name">
+            <input type="password" placeholder="Set Password">
+            <button onclick="handleAuth()">REGISTER NOW</button>
+            <p style="margin-top: 15px; cursor: pointer; color: #888;" onclick="closeModal()">Close</p>
+        </div>
+    </div>
+
+    <script>
+        function createBoxes(gridId, prefix, startPrice) {
+            const grid = document.getElementById(gridId);
+            for (let i = 1; i <= 8; i++) {
+                grid.innerHTML += `
+                    <div class="product-card" data-code="${prefix}-${100 + i}">
+                        <div class="img-placeholder">IMAGE [${prefix}-${100 + i}]</div>
+                        <div class="product-info">
+                            <p class="p-code">CODE: ${prefix}-${100 + i}</p>
+                            <p class="p-name">Premium Item ${i}</p>
+                            <p class="p-price">৳ ${startPrice + (i * 300)}</p>
+                            <a href="https://wa.me/8801961454604?text=Order Code: ${prefix}-${100 + i}" class="order-btn">ORDER VIA WHATSAPP</a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        createBoxes('partyGrid', 'PARTY', 5500);
+        createBoxes('bridalGrid', 'BRIDE', 12500);
+        createBoxes('silkGrid', 'SILK', 7500);
+
+        function searchProduct() {
+            const input = document.getElementById('searchInput').value.toUpperCase();
+            const cards = document.querySelectorAll('.product-card');
+            const titles = document.querySelectorAll('.layer-title');
+            let found = false;
+            cards.forEach(card => {
+                const code = card.getAttribute('data-code');
+                if (code.includes(input)) { card.style.display = "block"; found = true; }
+                else { card.style.display = "none"; }
+            });
+            titles.forEach(t => t.style.display = input === "" ? "block" : "none");
+            document.getElementById('noResults').style.display = found ? "none" : "block";
+        }
+
+        function openModal() { document.getElementById('authModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('authModal').style.display = 'none'; }
+        function handleAuth() {
+            const name = document.getElementById('nameInput').value;
+            if(name) {
+                localStorage.setItem('luxeraUser', name);
+                updateUI();
+                closeModal();
+            }
+        }
+        function updateUI() {
+            const user = localStorage.getItem('luxeraUser');
+            if(user) {
+                document.getElementById('userNameDisplay').innerText = "Hello, " + user;
+                document.getElementById('authBtn').innerText = "LOGOUT";
+                document.getElementById('authBtn').onclick = () => { localStorage.removeItem('luxeraUser'); location.reload(); };
+            }
+        }
+        window.onload = updateUI;
+    </script>
+</body>
+</html>
