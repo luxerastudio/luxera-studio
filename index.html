@@ -34,15 +34,26 @@
             border-radius: 25px; transition: 0.3s;
         }
 
-        /* --- জীবন্ত বক্স এনিমেশন (Self-Floating) --- */
+        /* --- Hero স্লাইডশো --- */
+        .slider { position: relative; width: 100%; height: 75vh; overflow: hidden; }
+        .slide {
+            position: absolute; width: 100%; height: 100%; opacity: 0;
+            transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center;
+        }
+        .slide.active { opacity: 1; }
+        .slide-overlay { background: rgba(0,0,0,0.4); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .slide-text { text-align: center; color: #fff; }
+        .slide-text h2 { font-size: clamp(35px, 6vw, 65px); text-shadow: 2px 2px 15px rgba(0,0,0,0.5); }
+
+        /* --- জীবন্ত বক্স এনিমেশন --- */
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
 
         .container { padding: 40px 8% 80px; }
-        .layer-title { font-size: 28px; margin: 60px 0 35px; text-align: center; text-transform: uppercase; }
+        .layer-title { font-size: 28px; margin: 70px 0 35px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
         .layer-title::after { content: ''; display: block; width: 60px; height: 3px; background: #8e6d10; margin: 15px auto; }
         
         .product-grid {
@@ -53,17 +64,13 @@
             background: #fff; border: 1px solid #f2f2f2; padding: 20px; 
             text-align: center; border-radius: 15px; position: relative;
             cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-            
-            /* স্বয়ংক্রিয় নড়াচড়া */
             animation: float 4s ease-in-out infinite;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* আলাদা আলাদা টাইমিং যাতে সব একসাথে না নড়ে */
-        .product-card:nth-child(even) { animation-delay: 1s; }
-        .product-card:nth-child(odd) { animation-delay: 2s; }
+        .product-card:nth-child(even) { animation-delay: 1.5s; }
+        .product-card:nth-child(odd) { animation-delay: 0.5s; }
 
-        /* মাউস নিলে এনিমেশন থেমে যাবে এবং বড় হবে */
         .product-card:hover { 
             animation-play-state: paused;
             transform: translateY(-20px) scale(1.06);
@@ -74,15 +81,12 @@
         .img-placeholder { 
             width: 100%; height: 350px; background: #fbfbfb; 
             display: flex; align-items: center; justify-content: center; 
-            color: #ddd; border-radius: 10px; margin-bottom: 18px;
-            transition: 0.5s; border: 1px dashed #eee;
+            color: #ccc; border-radius: 10px; margin-bottom: 18px;
+            transition: 0.5s; border: 1px dashed #eee; font-size: 11px;
         }
 
-        .product-card:hover .img-placeholder { transform: scale(0.96); border-color: #d4af37; background: #fff; }
-
-        .p-code { font-size: 11px; color: #888; font-weight: 600; }
-        .p-name { font-size: 16px; font-weight: 600; margin: 8px 0; }
-        .p-price { color: #8e6d10; font-weight: 700; font-size: 20px; margin-bottom: 15px; }
+        .p-code { font-size: 11px; color: #888; font-weight: 600; letter-spacing: 1px; }
+        .p-price { color: #8e6d10; font-weight: 700; font-size: 20px; margin: 10px 0; }
 
         .order-btn {
             display: block; width: 100%; padding: 12px; background: #1a1a1a; 
@@ -111,7 +115,7 @@
         .modal-content button { width: 100%; padding: 15px; background: #8e6d10; color: #fff; border: none; cursor: pointer; border-radius: 10px; font-weight: 700; }
 
         @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } header { flex-direction: column; } }
+        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } header { flex-direction: column; } .slider { height: 50vh; } }
     </style>
 </head>
 <body>
@@ -120,13 +124,22 @@
         <div class="logo">LUXERA STUDIO</div>
         <div class="search-container">
             <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-bar" id="searchInput" placeholder="Search by Code (e.g. PARTY-101)..." onkeyup="searchProduct()">
+            <input type="text" class="search-bar" id="searchInput" placeholder="Search Saree by Code..." onkeyup="searchProduct()">
         </div>
         <div class="user-info">
             <span id="userNameDisplay" style="font-weight: 600; color: #8e6d10; margin-right: 10px;"></span>
             <button class="auth-btn" id="authBtn" onclick="openModal()">SIGN IN / REGISTER</button>
         </div>
     </header>
+
+    <section class="slider">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1583391733959-1c5861b369c6?q=80&w=1600');">
+            <div class="slide-overlay"><div class="slide-text"><h2>Royal Bridal Collection</h2><p>Exclusivity in Every Thread</p></div></div>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1610030469668-93510cb283de?q=80&w=1600');">
+            <div class="slide-overlay"><div class="slide-text"><h2>Elegance Redefined</h2><p>Premium Luxury Sarees</p></div></div>
+        </div>
+    </section>
 
     <div class="container">
         <h2 class="layer-title">GORGEOUS PARTY WEAR</h2>
@@ -138,18 +151,18 @@
         <h2 class="layer-title">LUXURY SILK SERIES</h2>
         <div class="product-grid" id="silkGrid"></div>
         
-        <div id="noResults" style="display:none; text-align:center; padding: 80px; color: #999;">No Saree found!</div>
+        <div id="noResults" style="display:none; text-align:center; padding: 80px; color: #999;">No results found.</div>
     </div>
 
     <footer>
         <div class="footer-main">
             <div class="footer-col">
                 <h3>LUXERA STUDIO</h3>
-                <p>Premium Saree Boutique in Sylhet. Experience the art of luxury.</p>
-                <p><i class="fas fa-map-marker-alt" style="color:#d4af37"></i> Zindabazar, Sylhet</p>
+                <p>The premium saree destination in Sylhet City. Handcrafted elegance for your special moments.</p>
+                <p><i class="fas fa-map-marker-alt" style="color:#d4af37"></i> Zindabazar, Sylhet, BD</p>
             </div>
             <div class="footer-col">
-                <h3>CONTACT US</h3>
+                <h3>CONTACT CHANNELS</h3>
                 <div class="contact-links">
                     <a href="https://wa.me/8801961454604" target="_blank" class="c-item"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
                     <a href="https://m.me/yourpage" target="_blank" class="c-item"><i class="fab fa-facebook-messenger"></i> MESSENGER</a>
@@ -162,25 +175,26 @@
 
     <div class="modal" id="authModal">
         <div class="modal-content">
-            <h2>Create Account</h2>
-            <input type="text" id="nameInput" placeholder="Enter Full Name">
-            <input type="password" placeholder="Set Password">
-            <button onclick="handleAuth()">REGISTER NOW</button>
-            <p style="margin-top: 15px; cursor: pointer; color: #888;" onclick="closeModal()">Close</p>
+            <h2>Join Luxera Studio</h2>
+            <input type="text" id="nameInput" placeholder="Your Name">
+            <input type="password" placeholder="Password">
+            <button onclick="handleAuth()">CREATE ACCOUNT</button>
+            <p style="margin-top: 20px; cursor: pointer; color: #888;" onclick="closeModal()">Close</p>
         </div>
     </div>
 
     <script>
+        // প্রোডাক্ট বক্স জেনারেশন
         function createBoxes(gridId, prefix, startPrice) {
             const grid = document.getElementById(gridId);
             for (let i = 1; i <= 8; i++) {
                 grid.innerHTML += `
                     <div class="product-card" data-code="${prefix}-${100 + i}">
-                        <div class="img-placeholder">IMAGE [${prefix}-${100 + i}]</div>
+                        <div class="img-placeholder">PHOTO [${prefix}-${100 + i}]</div>
                         <div class="product-info">
                             <p class="p-code">CODE: ${prefix}-${100 + i}</p>
-                            <p class="p-name">Premium Item ${i}</p>
-                            <p class="p-price">৳ ${startPrice + (i * 300)}</p>
+                            <p class="p-name">Luxera Premium Item ${i}</p>
+                            <p class="p-price">৳ ${startPrice + (i * 350)}</p>
                             <a href="https://wa.me/8801961454604?text=Order Code: ${prefix}-${100 + i}" class="order-btn">ORDER VIA WHATSAPP</a>
                         </div>
                     </div>
@@ -191,6 +205,18 @@
         createBoxes('bridalGrid', 'BRIDE', 12500);
         createBoxes('silkGrid', 'SILK', 7500);
 
+        // স্লাইডশো লজিক
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        function autoSlide() {
+            slides[slideIndex].classList.remove('active');
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
+            setTimeout(autoSlide, 5000);
+        }
+        autoSlide();
+
+        // সার্চ ফাংশন
         function searchProduct() {
             const input = document.getElementById('searchInput').value.toUpperCase();
             const cards = document.querySelectorAll('.product-card');
@@ -205,6 +231,7 @@
             document.getElementById('noResults').style.display = found ? "none" : "block";
         }
 
+        // রেজিস্ট্রেশন লজিক
         function openModal() { document.getElementById('authModal').style.display = 'flex'; }
         function closeModal() { document.getElementById('authModal').style.display = 'none'; }
         function handleAuth() {
