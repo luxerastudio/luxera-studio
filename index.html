@@ -109,16 +109,76 @@
             footer { padding: 80px 8% 40px; }
             .hero { height: 350px; }
             .slide h2 { font-size: 28px; }
-            /* প্রোডাক্ট বক্স প্রিমিয়াম লুক */
-.card { 
-    border-radius: 12px !important; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; 
-    border: 1px solid #f0f0f0 !important;
-    padding: 8px !important;
-    margin-bottom: 15px !important;
-}
-.card img { border-radius: 10px !important; }        }
-    </style>
+            
+           /* LUXERA MOBILE FINAL PREMIUM FIX (ONLY FOR MOBILE) */
+    @media (max-width: 768px) {
+        /* ১. ব্র্যান্ডের নাম মাঝখানে এবং আইকন ছোট করা */
+        header, .header-container { 
+            display: flex !important; 
+            flex-direction: column !important; 
+            align-items: center !important; 
+            padding: 10px 0 !important;
+        }
+        .logo, .logo-text { 
+            font-size: 22px !important; 
+            margin-bottom: 10px !important; 
+            text-align: center !important;
+            width: 100% !important;
+        }
+        .header-icons { 
+            display: flex !important; 
+            gap: 25px !important; 
+            justify-content: center !important;
+            width: 100% !important;
+        }
+        .header-icons a span, .header-icons span { 
+            display: none !important; /* লগইন ও কার্ট লেখা মুছে শুধু লোগো থাকবে */
+        }
+        .header-icons i {
+            font-size: 20px !important;
+        }
+
+        /* ২. টাইটেল ছোট ও এক লাইনে করা (যেমন: গর্জিয়াস পার্টি ওয়্যার) */
+        .section-title h2, h2.section-title { 
+            font-size: 18px !important; 
+            white-space: nowrap !important; 
+            overflow: hidden !important; 
+            text-overflow: ellipsis !important; 
+            text-align: center !important;
+            padding: 0 10px !important;
+            margin-bottom: 20px !important;
+        }
+
+        /* ৩. প্রোডাক্ট বক্স প্রিমিয়াম ও সাইজ ছোট করা */
+        .grid, .product-grid { 
+            display: grid !important; 
+            grid-template-columns: repeat(2, 1fr) !important; /* এক লাইনে ২টা বক্স */
+            gap: 12px !important; 
+            padding: 10px !important;
+        }
+        .card, .product-card { 
+            background: #fff !important;
+            border-radius: 12px !important; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important; 
+            border: 1px solid #f2f2f2 !important;
+            padding: 8px !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+        }
+        .card img, .product-image { 
+            height: 160px !important; 
+            border-radius: 8px !important;
+            object-fit: cover !important;
+        }
+        .card h3, .product-name { 
+            font-size: 13px !important; 
+            margin: 8px 0 4px !important;
+            height: 35px;
+            overflow: hidden;
+        }
+        .price { font-size: 14px !important; font-weight: 700 !important; }
+    }
+  </style>
 </head>
 <body>
 
