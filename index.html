@@ -6,8 +6,26 @@
     <title>Luxera Studio | Official Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
     <style>
+    /* ৩. Custom Golden Cursor for PC */
+        @media (min-width: 1024px) {
+            body { 
+                cursor: url('https://cur.cursors-4u.net/others/oth-9/oth807.cur'), auto; 
+            }
+            a, button, .card, .floating-wa, .glass-icon { 
+                cursor: pointer; 
+            }
+        }
+
+        /* ২. Smooth Image Fade-in Animation */
+        .img-box {
+            opacity: 0;
+            animation: luxuryFade 1.8s ease-out forwards;
+        }
+        @keyframes luxuryFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }    
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; border: none; text-decoration: none; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: #fffdfa; color: #1a1a1a; overflow-x: hidden; }
 
@@ -316,6 +334,19 @@
                 card.style.display = card.innerText.toUpperCase().includes(val) ? "block" : "none";
             });
         }
-    </script>
+        // Email Subscription Feedback
+        const gmailBtn = document.querySelector('.footer-gmail-box button');
+        if(gmailBtn) {
+            gmailBtn.addEventListener('click', function() {
+                let emailInput = document.querySelector('.footer-gmail-box input');
+                let email = emailInput.value;
+                if(email.includes('@')) {
+                    alert('Thank you for subscribing to Luxera Studio! We will keep you updated.');
+                    emailInput.value = ""; // বক্স খালি করে দিবে
+                } else {
+                    alert('Please enter a valid Gmail address.');
+                }
+            });
+        }    </script>
 </body>
 </html>
