@@ -20,7 +20,7 @@
         
         .header-top { 
             display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 25px; border: none; /* কোনো লাইন থাকবে না */
+            margin-bottom: 25px;
         }
 
         .header-left-icons { display: flex; gap: 15px; width: 150px; }
@@ -42,7 +42,6 @@
             width: 100%; padding: 15px 25px 15px 60px; border: 1px solid rgba(142, 109, 16, 0.1);
             border-radius: 40px; background: #fbfbfb; font-size: 15px; transition: 0.4s;
         }
-        .search-bar:focus { border-color: #8e6d10; background: #fff; box-shadow: 0 5px 15px rgba(142, 109, 16, 0.05); }
         .search-icon { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: #8e6d10; font-size: 20px; }
 
         /* ক্যাটাগরি বার */
@@ -62,10 +61,9 @@
         .slide.active { opacity: 1; }
         .slide-overlay { background: rgba(0,0,0,0.3); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
 
-        /* --- প্রোডাক্ট বক্স --- */
+        /* --- প্রোডাক্ট গ্রিড --- */
         .container { padding: 80px 8%; }
         .layer-title { font-size: 32px; margin-bottom: 50px; text-align: center; letter-spacing: 5px; text-transform: uppercase; }
-        .layer-title::after { content: ''; display: block; width: 70px; height: 3px; background: #8e6d10; margin: 15px auto; }
         
         .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 35px; margin-bottom: 100px; }
         
@@ -77,35 +75,40 @@
         .product-card:hover { animation-play-state: paused; transform: scale(1.05); border-color: #d4af37; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
         .img-box { width: 100%; height: 320px; background: #fafafa; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: #ccc; border: 1px dashed #eee; }
 
-        /* --- বড় ডিটেইলস পপ-আপ --- */
+        /* --- আপনার ছবির মতো নতুন পপ-আপ ডিটেইলস --- */
         .detail-modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.9); z-index: 9999; align-items: center; justify-content: center;
         }
         .detail-content {
-            background: #fff; width: 90%; max-width: 1000px; display: flex;
-            border-radius: 30px; overflow: hidden; animation: slideUp 0.5s ease;
+            background: #fff; width: 95%; max-width: 1100px; display: flex;
+            border-radius: 20px; overflow: hidden; position: relative;
         }
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .detail-img { width: 50%; background: #f9f9f9; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #ddd; }
-        .detail-info { width: 50%; padding: 60px; position: relative; }
-        .price-tag { font-size: 32px; color: #8e6d10; font-weight: 700; margin: 20px 0; }
-        .detail-specs { margin-bottom: 30px; border-top: 1px solid #eee; padding-top: 25px; }
-        .detail-specs p { font-size: 14px; color: #666; margin-bottom: 12px; }
-        .wa-btn { background: #25D366; color: #fff; padding: 18px 35px; border-radius: 50px; display: inline-block; font-weight: 600; font-size: 16px; transition: 0.3s; }
-        .close-btn { position: absolute; top: 30px; right: 35px; font-size: 35px; cursor: pointer; color: #ccc; }
+        .detail-img-side { width: 45%; background: #f4f4f4; display: flex; align-items: center; justify-content: center; }
+        .detail-info-side { width: 55%; padding: 40px; overflow-y: auto; max-height: 90vh; }
+        
+        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 30px; cursor: pointer; color: #333; z-index: 10; }
+        
+        .m-title { font-size: 26px; font-weight: 600; color: #1a1a1a; margin-bottom: 10px; }
+        .m-price { font-size: 24px; color: #333; margin-bottom: 15px; font-weight: 500; }
+        .m-code { color: #d9534f; font-weight: 600; margin-bottom: 20px; font-size: 14px; }
+        
+        .detail-list { border-top: 1px solid #eee; padding-top: 20px; }
+        .detail-list p { margin-bottom: 8px; font-size: 14px; color: #444; }
+        .detail-list b { color: #000; display: inline-block; width: 140px; }
+        
+        .wa-btn { background: #000; color: #fff; padding: 15px 40px; border-radius: 5px; display: inline-block; margin-top: 30px; font-weight: 500; transition: 0.3s; }
+        .wa-btn:hover { background: #333; }
 
         /* ফুটার */
         footer { background: #000; color: #fff; padding: 100px 8% 50px; border-top: 5px solid #8e6d10; }
         .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; }
-        .footer-col h3 { color: #d4af37; margin-bottom: 30px; letter-spacing: 2px; }
-        .c-item { display: flex; align-items: center; background: #111; padding: 18px; color: #fff; border-radius: 8px; margin-bottom: 12px; transition: 0.3s; }
-        .c-item:hover { background: #8e6d10; transform: translateX(10px); }
+        .footer-col h3 { color: #d4af37; margin-bottom: 30px; }
+        .c-item { display: flex; align-items: center; background: #111; padding: 18px; color: #fff; border-radius: 8px; margin-bottom: 12px; }
 
         @media (max-width: 900px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
-            .detail-content { flex-direction: column; height: 90vh; overflow-y: auto; }
-            .detail-img, .detail-info { width: 100%; }
+            .detail-content { flex-direction: column; width: 90%; }
+            .detail-img-side, .detail-info-side { width: 100%; }
         }
     </style>
 </head>
@@ -114,7 +117,7 @@
     <header>
         <div class="header-top">
             <div class="header-left-icons">
-                <div class="glass-icon" onclick="openAuth()"><i class="fas fa-user"></i></div>
+                <div class="glass-icon"><i class="fas fa-user"></i></div>
                 <div class="glass-icon"><i class="fas fa-shopping-bag"></i></div>
             </div>
             <a href="#" class="logo">LUXERA STUDIO</a>
@@ -124,7 +127,7 @@
         <div class="search-row">
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="sInput" class="search-bar" placeholder="Search Saree by Code (e.g. PARTY-101)..." onkeyup="search()">
+                <input type="text" id="sInput" class="search-bar" placeholder="Search for items..." onkeyup="search()">
             </div>
         </div>
         
@@ -138,43 +141,33 @@
         </nav>
     </header>
 
-    <section class="slider">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1583391733959-1c5861b369c6?q=80&w=1600');">
-            <div class="slide-overlay"><div><h2 style="font-size: 60px;">Royal Collection</h2><p>HANDCRAFTED ELEGANCE</p></div></div>
-        </div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1610030469668-93510cb283de?q=80&w=1600');">
-            <div class="slide-overlay"><div><h2 style="font-size: 60px;">Bridal Special</h2><p>TIMELESS BEAUTY</p></div></div>
-        </div>
-    </section>
-
     <div class="container">
-        <h2 class="layer-title">GORGEOUS PARTY WEAR</h2>
-        <div class="product-grid" id="partyGrid"></div>
-
-        <h2 class="layer-title">EXCLUSIVE BRIDAL LAYER</h2>
-        <div class="product-grid" id="bridalGrid"></div>
-
-        <h2 class="layer-title">LUXURY SILK SERIES</h2>
-        <div class="product-grid" id="silkGrid"></div>
+        <h2 class="layer-title">COLLECTION</h2>
+        <div class="product-grid" id="mainGrid"></div>
     </div>
 
     <div class="detail-modal" id="pModal">
         <div class="detail-content">
             <span class="close-btn" onclick="closeP()">&times;</span>
-            <div class="detail-img">PREMIUM SAREE IMAGE</div>
-            <div class="detail-info">
-                <p id="mCode" style="color:#999; font-size:12px; font-weight:600;"></p>
-                <h2 id="mTitle" style="font-size: 34px; color:#333;">Saree Name</h2>
-                <div class="price-tag" id="mPrice"></div>
+            <div class="detail-img-side">IMAGE PREVIEW</div>
+            <div class="detail-info-side">
+                <p style="color: #666; font-size: 13px; margin-bottom: 5px;">Women</p>
+                <h2 class="m-title" id="mTitle">Product Name</h2>
+                <div class="m-price" id="mPrice">৳ 0.00</div>
+                <div class="m-code" id="mCode">Code: 000000</div>
                 
-                <div class="detail-specs">
-                    <p><b>Fabric:</b> Premium Handloom Silk / Katan</p>
-                    <p><b>Work:</b> Heavy Zari & Traditional Stone Work</p>
-                    <p><b>Care:</b> Dry Wash Recommended</p>
-                    <p><b>In Stock:</b> Available in Limited Quantity</p>
+                <div class="detail-list">
+                    <p><b>Collection:</b> <span id="mColl">Muslin</span></p>
+                    <p><b>Fabric:</b> <span id="mFab">Cotton</span></p>
+                    <p><b>Work type:</b> <span id="mWork">Print</span></p>
+                    <p><b>Color:</b> <span id="mColor">MULTI PRINT</span></p>
+                    <p><b>Includes:</b> <span id="mInc">Saree only</span></p>
+                    <p><b>No. of components:</b> <span id="mComp">1</span></p>
+                    <p><b>Fit:</b> <span id="mFit">Free Size</span></p>
+                    <p style="margin-top: 20px;"><b>Fabric Care:</b> <span id="mCare">Dry Clean Only + Steam Iron</span></p>
                 </div>
 
-                <a href="#" id="waLink" target="_blank" class="wa-btn"><i class="fab fa-whatsapp"></i> CONFIRM ORDER ON WHATSAPP</a>
+                <a href="#" id="waLink" target="_blank" class="wa-btn"><i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP</a>
             </div>
         </div>
     </div>
@@ -183,63 +176,76 @@
         <div class="footer-main">
             <div class="footer-col">
                 <h3>LUXERA STUDIO</h3>
-                <p>The premium ethnic wear destination in Sylhet. We define luxury through every thread.</p>
-                <p style="margin-top: 20px;"><i class="fas fa-map-marker-alt" style="color:#d4af37"></i> Zindabazar, Sylhet, BD</p>
+                <p>Zindabazar, Sylhet, BD</p>
             </div>
             <div class="footer-col">
-                <h3>CONTACT US</h3>
-                <a href="https://wa.me/8801961454604" target="_blank" class="c-item"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
-                <a href="#" class="c-item"><i class="fab fa-facebook-messenger"></i> MESSENGER</a>
-            </div>
-            <div class="footer-col">
-                <h3>NEWSLETTER</h3>
-                <input type="text" placeholder="Your Email" style="width:100%; padding:15px; border-radius:8px; margin-bottom:10px;">
-                <button style="width:100%; padding:15px; background:#8e6d10; color:#fff; border-radius:8px; cursor:pointer; font-weight:600;">SUBSCRIBE</button>
+                <h3>CONTACT</h3>
+                <a href="#" class="c-item">WHATSAPP</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // প্রোডাক্ট লোডার
-        function loadProducts(id, prefix, price) {
-            const grid = document.getElementById(id);
-            for(let i=1; i<=8; i++) {
-                let code = `${prefix}-${100+i}`;
-                let name = `Luxera ${prefix} Saree ${i}`;
-                let p = price + (i*400);
-                grid.innerHTML += `
-                    <div class="product-card" onclick="openP('${code}', '${name}', '${p}')">
-                        <div class="img-box">IMAGE [${code}]</div>
-                        <p style="font-size:11px; color:#999; letter-spacing:1px;">CODE: ${code}</p>
-                        <h3 style="font-size:17px; margin:10px 0;">${name}</h3>
-                        <p style="color:#8e6d10; font-weight:700; font-size:20px;">৳ ${p}</p>
-                    </div>
-                `;
+        // আপনি যখন শাড়ি অ্যাড করবেন, এখানে সব তথ্য লিখে দিবেন
+        const data = [
+            {
+                code: 'A594933', 
+                name: 'Women\'s Contrasted Cotton Saree by Muslin', 
+                price: '3,632.20',
+                collection: 'Muslin',
+                fabric: 'Cotton',
+                work: 'Print',
+                color: 'MULTI PRINT',
+                inc: 'Saree only',
+                comp: '1',
+                fit: 'Free Size',
+                care: 'Dry Clean Only + Steam Iron'
+            },
+            {
+                code: 'LX-202', 
+                name: 'Premium Silk Heritage Saree', 
+                price: '8,500.00',
+                collection: 'Silk',
+                fabric: 'Pure Silk',
+                work: 'Handmade',
+                color: 'Deep Red',
+                inc: 'Saree & Unstitched Blouse',
+                comp: '2',
+                fit: 'Free Size',
+                care: 'Dry Clean Only'
             }
-        }
-        loadProducts('partyGrid', 'PARTY', 5500);
-        loadProducts('bridalGrid', 'BRIDE', 12000);
-        loadProducts('silkGrid', 'SILK', 7500);
+        ];
 
-        // স্লাইডশো
-        let sIdx = 0;
-        const slides = document.querySelectorAll('.slide');
-        function autoS() {
-            slides[sIdx].classList.remove('active');
-            sIdx = (sIdx + 1) % slides.length;
-            slides[sIdx].classList.add('active');
-            setTimeout(autoS, 5000);
-        }
-        autoS();
+        const grid = document.getElementById('mainGrid');
+        data.forEach((p, index) => {
+            grid.innerHTML += `
+                <div class="product-card" onclick="openP(${index})">
+                    <div class="img-box">IMAGE</div>
+                    <p style="font-size:11px; color:#999;">Code: ${p.code}</p>
+                    <h3 style="font-size:16px; margin:10px 0;">${p.name}</h3>
+                    <p style="color:#8e6d10; font-weight:700; font-size:19px;">৳ ${p.price}</p>
+                </div>
+            `;
+        });
 
-        // মডাল ফাংশন
-        function openP(c, n, p) {
-            document.getElementById('mCode').innerText = "PRODUCT CODE: " + c;
-            document.getElementById('mTitle').innerText = n;
-            document.getElementById('mPrice').innerText = "৳ " + p;
-            document.getElementById('waLink').href = "https://wa.me/8801961454604?text=Hello Luxera Studio, I want to order: " + c;
+        function openP(index) {
+            const p = data[index];
+            document.getElementById('mTitle').innerText = p.name;
+            document.getElementById('mPrice').innerText = "৳ " + p.price;
+            document.getElementById('mCode').innerText = "Code: " + p.code;
+            document.getElementById('mColl').innerText = p.collection;
+            document.getElementById('mFab').innerText = p.fabric;
+            document.getElementById('mWork').innerText = p.work;
+            document.getElementById('mColor').innerText = p.color;
+            document.getElementById('mInc').innerText = p.inc;
+            document.getElementById('mComp').innerText = p.comp;
+            document.getElementById('mFit').innerText = p.fit;
+            document.getElementById('mCare').innerText = p.care;
+            
+            document.getElementById('waLink').href = "https://wa.me/8801961454604?text=Hello, I want to order: " + p.name + " (Code: " + p.code + ")";
             document.getElementById('pModal').style.display = 'flex';
         }
+
         function closeP() { document.getElementById('pModal').style.display = 'none'; }
         
         function search() {
