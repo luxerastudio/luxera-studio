@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxera Studio | Official Store</title>
+    <title>Luxera Studio | Premium Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
@@ -11,33 +11,29 @@
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; border: none; text-decoration: none; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: #fffdfa; color: #1a1a1a; overflow-x: hidden; }
 
-        /* --- Header & Search --- */
+        /* --- Header & Navigation --- */
         header { background: #fff; padding: 25px 5% 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
         .header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; }
         .logo { font-size: 32px; color: #8e6d10; letter-spacing: 5px; font-weight: 900; font-family: 'Playfair Display', serif; text-transform: uppercase; text-align: center; flex: 1; }
         .header-right-icons { display: flex; gap: 15px; width: 100px; justify-content: flex-end; }
         .glass-icon { background: rgba(142, 109, 16, 0.06); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #8e6d10; cursor: pointer; }
 
+        /* Long Search Bar */
         .search-row { display: flex; justify-content: center; margin-bottom: 25px; padding: 0 5%; }
         .search-container { width: 100%; max-width: 850px; position: relative; }
         .search-bar { width: 100%; padding: 15px 25px 15px 65px; border: 1px solid #eee; border-radius: 40px; background: #fcfcfc; font-size: 15px; }
         .search-icon { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: #8e6d10; font-size: 20px; }
 
+        /* Desktop Nav (Spread from Left to Right) */
+        .desktop-nav { display: flex; justify-content: space-around; padding: 20px 0; border-top: 1px solid #f2f2f2; }
+        .cat-item { color: #333; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
+        .cat-item:hover { color: #8e6d10; }
+
         /* --- Smart Slideshow with Zoom --- */
-        .hero { width: 100%; height: 600px; position: relative; overflow: hidden; }
-        .slide { 
-            position: absolute; width: 100%; height: 100%; opacity: 0; 
-            transition: opacity 1.5s ease-in-out; 
-            background-size: cover; background-position: center; 
-            display: flex; align-items: center; justify-content: center;
-            transform: scale(1.1); /* Default zoom for transition */
-        }
-        .slide.active { 
-            opacity: 1; 
-            transform: scale(1); /* Zoom out effect when active */
-            transition: opacity 1.5s ease-in-out, transform 8s linear; 
-        }
-        .slide h2 { color: #fff; font-size: 50px; font-family: 'Playfair Display'; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); text-transform: uppercase; letter-spacing: 8px; }
+        .hero { width: 100%; height: 550px; position: relative; overflow: hidden; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; transform: scale(1.1); }
+        .slide.active { opacity: 1; transform: scale(1); transition: opacity 1.5s ease, transform 6s linear; }
+        .slide h2 { color: #fff; font-size: 50px; font-family: 'Playfair Display'; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); letter-spacing: 8px; }
 
         /* --- Product Grid --- */
         .container { padding: 80px 8%; }
@@ -47,42 +43,37 @@
         .card:hover { border-color: #8e6d10; transform: translateY(-10px); }
         .img-box { width: 100%; height: 350px; background: #f9f9f9; border-radius: 15px; margin-bottom: 20px; background-size: cover; background-position: center; }
 
-        /* --- Extra Wide Smart Footer --- */
-        footer { background: #000; color: #fff; padding: 120px 8% 60px; border-top: 5px solid #8e6d10; margin-top: 50px; }
+        /* --- Details & Login Modals --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: #fff; width: 100%; max-width: 900px; display: flex; border-radius: 25px; overflow: hidden; position: relative; max-height: 90vh; }
+        .modal-img { width: 45%; background-size: cover; background-position: center; }
+        .modal-info { width: 55%; padding: 50px; overflow-y: auto; }
+        .m-price { font-size: 32px; color: #8e6d10; font-weight: 700; margin: 10px 0; }
+        .m-list p { margin-bottom: 12px; font-size: 15px; border-bottom: 1px solid #f5f5f5; padding-bottom: 5px; display: flex; }
+        .m-list b { width: 130px; }
+
+        .auth-card { background: #fff; padding: 40px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; }
+        .auth-card input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #eee; border-radius: 8px; }
+
+        /* --- Footer --- */
+        footer { background: #000; color: #fff; padding: 100px 8% 60px; border-top: 5px solid #8e6d10; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 80px; }
-        .f-col h3 { color: #d4af37; font-size: 26px; margin-bottom: 35px; font-family: 'Playfair Display'; letter-spacing: 2px; }
-        .f-col p { color: #888; line-height: 2; font-size: 15px; }
-
-        /* Smart Gmail Search Box in Footer */
-        .gmail-box { display: flex; margin-top: 25px; position: relative; max-width: 400px; }
-        .gmail-box input { 
-            width: 100%; padding: 15px 20px; background: rgba(255,255,255,0.05); 
-            border: 1px solid #333; color: #fff; border-radius: 30px; 
-            font-size: 14px; transition: 0.3s;
-        }
-        .gmail-box input:focus { border-color: #d4af37; background: rgba(255,255,255,0.1); }
-        .gmail-box button { 
-            position: absolute; right: 5px; top: 5px; 
-            padding: 10px 20px; background: #8e6d10; color: #fff; 
-            border-radius: 25px; font-weight: 600; cursor: pointer; 
-        }
-
-        /* Smart Social Icons */
-        .social-icons { display: flex; gap: 15px; margin-top: 40px; }
-        .s-btn { 
-            width: 50px; height: 50px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            color: #fff; font-size: 20px; transition: 0.3s; 
-            background: rgba(255,255,255,0.05); border: 1px solid #333;
-        }
-        .s-btn:hover { background: #8e6d10; border-color: #8e6d10; transform: translateY(-5px); }
+        .f-col h3 { color: #d4af37; font-size: 26px; margin-bottom: 30px; font-family: 'Playfair Display'; }
+        .social-icons { display: flex; gap: 15px; margin-top: 30px; }
+        .s-btn { width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s; }
+        .s-btn:hover { background: #8e6d10; }
+        .gmail-box { display: flex; margin-top: 20px; position: relative; }
+        .gmail-box input { width: 100%; padding: 12px; border-radius: 25px; background: #111; color: #fff; border: 1px solid #333; }
+        .gmail-box button { position: absolute; right: 5px; top: 5px; padding: 7px 15px; background: #8e6d10; border-radius: 20px; color: #fff; cursor: pointer; }
 
         @media (max-width: 768px) {
-            .logo { font-size: 22px; }
+            .logo { font-size: 24px; }
+            .desktop-nav { display: none; }
             .grid { grid-template-columns: repeat(2, 1fr); }
+            .modal-content { flex-direction: column; }
+            .modal-img { width: 100%; height: 250px; }
+            .modal-info { width: 100%; padding: 25px; }
             .f-grid { grid-template-columns: 1fr; }
-            .hero { height: 400px; }
-            .slide h2 { font-size: 28px; }
         }
     </style>
 </head>
@@ -93,27 +84,31 @@
             <div style="width:100px;"><i class="fas fa-bars" style="font-size:24px; color:#8e6d10; cursor:pointer;"></i></div>
             <div class="logo">LUXERA STUDIO</div>
             <div class="header-right-icons">
-                <div class="glass-icon"><i class="fas fa-user"></i></div>
+                <div class="glass-icon" onclick="openModal('authModal')"><i class="fas fa-user"></i></div>
                 <div class="glass-icon"><i class="fas fa-shopping-bag"></i></div>
             </div>
         </div>
         <div class="search-row">
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" class="search-bar" placeholder="Search by code (e.g. PT-101)..." onkeyup="filterItems()">
+                <input type="text" id="searchInput" class="search-bar" placeholder="Search product code..." onkeyup="filterItems()">
             </div>
         </div>
+        <nav class="desktop-nav">
+            <a href="#party" class="cat-item">Party Wear</a>
+            <a href="#bridal" class="cat-item">Bridal Layer</a>
+            <a href="#silk" class="cat-item">Luxury Silk</a>
+            <a href="#" class="cat-item">New Arrivals</a>
+            <a href="#" class="cat-item">Contact Us</a>
+        </nav>
     </header>
 
     <div class="hero">
         <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1600')">
-            <h2>Luxury Collection</h2>
+            <h2>The Art of Royalty</h2>
         </div>
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1583391733959-1c5861b369c6?w=1600')">
-            <h2>The Art of Saree</h2>
-        </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=1600')">
-            <h2>Royal Bridal Wear</h2>
+            <h2>Luxury Silk Saree</h2>
         </div>
     </div>
 
@@ -128,72 +123,109 @@
         <div class="grid" id="gridSilk"></div>
     </div>
 
+    <div class="modal" id="pModal">
+        <div class="modal-content">
+            <span onclick="closeModal('pModal')" style="position:absolute; top:20px; right:30px; font-size:40px; cursor:pointer; z-index:100;">&times;</span>
+            <div class="modal-img" id="modalImg"></div>
+            <div class="modal-info">
+                <h2 id="mTitle" style="font-family:'Playfair Display';">Product Name</h2>
+                <p id="mPrice" class="m-price">৳ 0</p>
+                <p id="mCode" style="color:red; font-weight:600; margin-bottom:20px;">CODE: 000</p>
+                <div class="m-list">
+                    <p><b>Color:</b> <span id="mColor">Royal Blue</span></p>
+                    <p><b>Includes:</b> <span id="mIncludes">Saree only</span></p>
+                    <p><b>Fabric:</b> Premium Quality</p>
+                    <p><b>Work:</b> Handcrafted Zari</p>
+                </div>
+                <a href="#" id="waLink" style="background:#000; color:#fff; display:block; text-align:center; padding:15px; border-radius:10px; margin-top:30px; font-weight:600;" target="_blank">ORDER VIA WHATSAPP</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="authModal">
+        <div class="auth-card">
+            <span onclick="closeModal('authModal')" style="float:right; cursor:pointer; font-size:25px;">&times;</span>
+            <h2 style="font-family:'Playfair Display'; color:#8e6d10;">Member Login</h2>
+            <input type="email" placeholder="Email Address">
+            <input type="password" placeholder="Password">
+            <button style="background:#000; color:#fff; width:100%; padding:12px; border-radius:8px; cursor:pointer;">LOGIN</button>
+        </div>
+    </div>
+
     <footer>
         <div class="f-grid">
             <div class="f-col">
                 <h3>LUXERA STUDIO</h3>
-                <p>Experience the hallmark of elegance. Our handcrafted collections are designed to make your special moments truly royal.</p>
-                
+                <p>The hallmark of elegance and royalty. Handcrafted for your special moments.</p>
                 <div class="gmail-box">
                     <input type="email" placeholder="Subscribe via Gmail">
                     <button>SEND</button>
                 </div>
             </div>
-
             <div class="f-col">
-                <h3>CONNECT WITH US</h3>
-                <p><i class="fas fa-map-marker-alt" style="color:#d4af37; margin-right:10px;"></i> Official Store, Bangladesh</p>
-                
+                <h3>CONNECT</h3>
+                <p>Official Store, Bangladesh</p>
                 <div class="social-icons">
-                    <a href="https://m.me/yourprofile" class="s-btn" title="Messenger"><i class="fab fa-facebook-messenger"></i></a>
-                    <a href="https://facebook.com/yourpage" class="s-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="mailto:info@luxerastudio.com" class="s-btn" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://wa.me/8801961454604" class="s-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="s-btn"><i class="fab fa-facebook-messenger"></i></a>
+                    <a href="#" class="s-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="mailto:support@luxera.com" class="s-btn"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-
             <div class="f-col">
-                <h3>CUSTOMER CARE</h3>
-                <p>Track My Order</p>
+                <h3>LINKS</h3>
+                <p>Track Order</p>
                 <p>Refund Policy</p>
-                <p>Shipping Terms</p>
             </div>
         </div>
-        <p style="text-align:center; margin-top:80px; color:#444; font-size:12px; border-top:1px solid #111; padding-top:40px;">&copy; 2026 LUXERA STUDIO | THE ART OF ELEGANCE | ALL RIGHTS RESERVED</p>
+        <p style="text-align:center; margin-top:80px; color:#444; font-size:12px;">&copy; 2026 LUXERA STUDIO | ALL RIGHTS RESERVED</p>
     </footer>
 
     <script>
-        // Automatic Zoom Slideshow Logic
-        let currentSlide = 0;
+        // Slideshow Logic
+        let sIdx = 0;
         const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            slides[sIdx].classList.remove('active');
+            sIdx = (sIdx + 1) % slides.length;
+            slides[sIdx].classList.add('active');
+        }, 5000);
 
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-        setInterval(nextSlide, 5000); // 5 seconds interval
-
-        // Product Generation Logic
-        const config = [
+        // Product Generation with Details Logic
+        const cats = [
             { id: 'gridParty', prefix: 'PT', title: 'Party' },
             { id: 'gridBridal', prefix: 'BR', title: 'Bridal' },
             { id: 'gridSilk', prefix: 'SL', title: 'Silk' }
         ];
 
-        config.forEach(c => {
+        cats.forEach(c => {
             let container = document.getElementById(c.id);
             for(let i=1; i<=8; i++) {
                 let code = c.prefix + "-" + (100 + i);
+                let name = "Luxera " + c.title + " Exclusive";
+                let price = (c.prefix === 'BR' ? '28,500' : '12,500');
+                let color = "Premium Shade";
                 container.innerHTML += `
-                    <div class="card">
+                    <div class="card" onclick="openDetails('${name}', '${price}', '${code}', '${color}')">
                         <div class="img-box" style="background-image: url('https://via.placeholder.com/400x500/f9f9f9/8e6d10?text=${c.title}+${i}')"></div>
                         <p style="color:red; font-size:11px; font-weight:600;">CODE: ${code}</p>
-                        <h3 style="font-size:17px; margin:12px 0; font-family:'Playfair Display'">Luxera ${c.title} Exclusive</h3>
-                        <p style="color:#8e6d10; font-weight:700; font-size:19px;">৳ ${(c.prefix === 'BR' ? '28,500' : '12,500')}</p>
+                        <h3 style="font-size:17px; margin:10px 0;">${name}</h3>
+                        <p style="color:#8e6d10; font-weight:700;">৳ ${price}</p>
                     </div>`;
             }
         });
+
+        function openDetails(name, price, code, color) {
+            document.getElementById('mTitle').innerText = name;
+            document.getElementById('mPrice').innerText = "৳ " + price;
+            document.getElementById('mCode').innerText = "CODE: " + code;
+            document.getElementById('mColor').innerText = color;
+            document.getElementById('modalImg').style.backgroundImage = `url('https://via.placeholder.com/400x500/f9f9f9/8e6d10?text=${code}')`;
+            document.getElementById('waLink').href = "https://wa.me/8801961454604?text=Order: " + name + " (" + code + ")";
+            document.getElementById('pModal').style.display = 'flex';
+        }
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         function filterItems() {
             let val = document.getElementById('searchInput').value.toUpperCase();
