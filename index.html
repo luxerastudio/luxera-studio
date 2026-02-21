@@ -3,83 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxera Studio | Premium Ethnic Wear</title>
+    <title>Luxera Studio | Official Premium Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
+        /* --- Base Setup --- */
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; border: none; text-decoration: none; }
         body { font-family: 'Poppins', sans-serif; background-color: #fffdfa; color: #1a1a1a; overflow-x: hidden; }
         h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
 
-        /* --- Header: পিসি ও মোবাইলে ব্যালেন্সড --- */
+        /* --- Header Section --- */
         header { background: #fff; padding: 30px 5% 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .header-left-icons { display: flex; gap: 12px; width: 150px; }
+        .header-left-icons { display: flex; gap: 15px; width: 150px; }
         .glass-icon {
             background: #fff; border: 1px solid rgba(142, 109, 16, 0.2); width: 45px; height: 45px;
             border-radius: 12px; display: flex; align-items: center; justify-content: center;
             color: #8e6d10; font-size: 19px; cursor: pointer; transition: 0.3s;
         }
-        .logo { font-size: 38px; color: #8e6d10; letter-spacing: 6px; font-weight: 900; text-transform: uppercase; flex-grow: 1; text-align: center; }
+        .logo { font-size: 35px; color: #8e6d10; letter-spacing: 6px; font-weight: 900; text-transform: uppercase; flex-grow: 1; text-align: center; }
         .header-right-filler { width: 150px; }
 
-        .search-row { display: flex; justify-content: center; margin-bottom: 20px; }
+        .search-row { display: flex; justify-content: center; margin-bottom: 25px; }
         .search-container { width: 100%; max-width: 750px; position: relative; }
-        .search-bar { width: 100%; padding: 15px 25px 15px 60px; border: 1px solid #f0f0f0; border-radius: 40px; background: #fbfbfb; font-size: 15px; }
-        .search-icon { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: #8e6d10; }
+        .search-bar { width: 100%; padding: 15px 25px 15px 60px; border: 1px solid #eee; border-radius: 40px; background: #fbfbfb; font-size: 15px; }
+        .search-icon { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: #8e6d10; font-size: 20px; }
 
         .category-bar { display: flex; justify-content: space-between; padding: 20px 0; background: #fff; border-top: 1px solid #f2f2f2; overflow-x: auto; }
-        .cat-item { color: #444; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; flex: 1; text-align: center; white-space: nowrap; padding: 0 10px; }
+        .cat-item { color: #444; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; flex: 1; text-align: center; white-space: nowrap; padding: 0 15px; }
 
-        /* --- Products: ৩টি আলাদা ক্যাটাগরি লেয়ার --- */
+        /* --- Slideshow Section --- */
+        .slider { width: 100%; height: 500px; position: relative; overflow: hidden; background: #000; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 1s ease-in-out; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
+        .slide.active { opacity: 1; }
+        .slide-content h2 { font-size: 50px; margin-bottom: 10px; letter-spacing: 5px; }
+        .shop-btn { padding: 12px 30px; background: #8e6d10; color: #fff; display: inline-block; margin-top: 20px; font-weight: 600; }
+
+        /* --- Products Grid & Layers --- */
         .container { padding: 60px 8%; }
-        .layer-title { font-size: 30px; margin: 40px 0; text-align: center; letter-spacing: 5px; text-transform: uppercase; }
+        .layer-title { font-size: 30px; margin: 50px 0 30px; text-align: center; letter-spacing: 5px; text-transform: uppercase; }
         .layer-title::after { content: ''; display: block; width: 60px; height: 3px; background: #8e6d10; margin: 15px auto; }
         
-        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 80px; }
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 60px; }
         
-        /* Floating Animation (Alive Effect) */
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         .product-card {
             background: #fff; border: 1px solid #f1f1f1; padding: 20px; border-radius: 18px;
             text-align: center; cursor: pointer; transition: 0.4s; animation: float 4s ease-in-out infinite;
         }
         .product-card:hover { animation-play-state: paused; transform: scale(1.05); border-color: #d4af37; box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        .img-box { width: 100%; height: 300px; background: #fafafa; border-radius: 12px; margin-bottom: 15px; background-size: cover; background-position: center; }
+        .img-box { width: 100%; height: 300px; background: #f9f9f9; border-radius: 12px; margin-bottom: 15px; background-size: cover; background-position: center; }
 
-        /* --- Full Details Modal (আপনার ছবির মতো) --- */
-        .detail-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; align-items: center; justify-content: center; }
-        .detail-content { background: #fff; width: 95%; max-width: 1100px; display: flex; border-radius: 15px; overflow: hidden; position: relative; max-height: 90vh; }
-        .detail-img-side { width: 45%; background: #f4f4f4; background-size: cover; background-position: center; }
-        .detail-info-side { width: 55%; padding: 50px; overflow-y: auto; }
-        
-        .m-title { font-size: 28px; color: #1a1a1a; margin-bottom: 10px; }
-        .m-price { font-size: 24px; color: #333; margin-bottom: 15px; font-weight: 500; }
-        .m-code { color: #d9534f; font-weight: 600; margin-bottom: 20px; font-size: 15px; }
-        
-        .detail-list p { margin-bottom: 10px; font-size: 14px; color: #444; display: flex; border-bottom: 1px solid #f9f9f9; padding-bottom: 5px; }
-        .detail-list b { color: #000; width: 160px; flex-shrink: 0; }
-        
-        .wa-btn { background: #000; color: #fff; padding: 18px 40px; border-radius: 5px; display: inline-block; margin-top: 30px; font-weight: 600; text-align: center; }
-        .close-btn { position: absolute; top: 20px; right: 25px; font-size: 30px; cursor: pointer; color: #333; z-index: 10; }
+        /* --- Detail Modal (Matching your image) --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center; }
+        .modal-content { background: #fff; width: 95%; max-width: 1100px; display: flex; border-radius: 15px; overflow: hidden; position: relative; max-height: 90vh; }
+        .modal-img { width: 45%; background: #eee; background-size: cover; background-position: center; }
+        .modal-info { width: 55%; padding: 50px; overflow-y: auto; }
+        .m-code { color: #d9534f; font-weight: 600; margin-bottom: 15px; display: block; }
+        .m-list p { margin-bottom: 10px; font-size: 14px; display: flex; border-bottom: 1px solid #f5f5f5; padding-bottom: 5px; }
+        .m-list b { width: 160px; color: #000; }
+        .wa-order-btn { background: #000; color: #fff; width: 100%; padding: 18px; display: block; text-align: center; font-weight: 600; margin-top: 30px; border-radius: 5px; }
 
-        /* --- Footer --- */
-        footer { background: #000; color: #fff; padding: 80px 8% 40px; border-top: 5px solid #8e6d10; margin-top: 50px; }
-        .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
-        .footer-col h3 { color: #d4af37; margin-bottom: 25px; }
-        .c-item { display: flex; align-items: center; background: #111; padding: 15px; color: #fff; border-radius: 8px; margin-bottom: 12px; border: 1px solid #222; }
+        /* --- Huge Footer --- */
+        footer { background: #000; color: #fff; padding: 80px 8% 40px; border-top: 5px solid #8e6d10; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+        .footer-col h3 { color: #d4af37; margin-bottom: 25px; letter-spacing: 2px; }
+        .footer-col p { color: #bbb; font-size: 14px; line-height: 1.8; }
+        .footer-link { display: flex; align-items: center; color: #fff; margin-bottom: 15px; transition: 0.3s; }
+        .footer-link:hover { color: #d4af37; padding-left: 10px; }
+        .footer-link i { margin-right: 15px; color: #8e6d10; }
 
-        /* --- MOBILE RESPONSIVE FIX --- */
+        /* --- Mobile Responsive --- */
         @media (max-width: 768px) {
-            .logo { font-size: 22px; letter-spacing: 2px; }
-            .header-left-icons, .header-right-filler { width: 100px; }
+            .logo { font-size: 24px; letter-spacing: 3px; }
+            .header-left-icons, .header-right-filler { width: 90px; }
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .img-box { height: 180px; }
-            .detail-content { flex-direction: column; height: 95vh; }
-            .detail-img-side { width: 100%; height: 300px; }
-            .detail-info-side { width: 100%; padding: 30px; }
-            .detail-list b { width: 130px; }
+            .modal-content { flex-direction: column; height: 95vh; }
+            .modal-img { width: 100%; height: 300px; }
+            .modal-info { width: 100%; padding: 30px; }
+            .slider { height: 300px; }
+            .slide-content h2 { font-size: 28px; }
         }
     </style>
 </head>
@@ -91,126 +95,140 @@
                 <div class="glass-icon"><i class="fas fa-user"></i></div>
                 <div class="glass-icon"><i class="fas fa-shopping-bag"></i></div>
             </div>
-            <a href="#" class="logo">LUXERA STUDIO</a>
+            <div class="logo">LUXERA STUDIO</div>
             <div class="header-right-filler"></div>
         </div>
-
         <div class="search-row">
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="sInput" class="search-bar" placeholder="Search Saree by Code..." onkeyup="search()">
+                <input type="text" id="sInput" class="search-bar" placeholder="Search by code..." onkeyup="search()">
             </div>
         </div>
-        
         <nav class="category-bar">
             <a href="#" class="cat-item">New Arrivals</a>
             <a href="#" class="cat-item">Party Wear</a>
             <a href="#" class="cat-item">Bridal Layer</a>
             <a href="#" class="cat-item">Luxury Silk</a>
-            <a href="#" class="cat-item">Muslin</a>
-            <a href="#" class="cat-item">Limited</a>
+            <a href="#" class="cat-item">Limited Edition</a>
         </nav>
     </header>
 
+    <div class="slider">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200')">
+            <div class="slide-content">
+                <h2>Royal Collection 2026</h2>
+                <p>Exquisite Sarees for Your Special Moments</p>
+                <a href="#partyGrid" class="shop-btn">Shop Now</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1583391733959-1c5861b369c6?w=1200')">
+            <div class="slide-content">
+                <h2>Bridal Heritage</h2>
+                <p>Pure Elegance in Every Thread</p>
+                <a href="#bridalGrid" class="shop-btn">View More</a>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
-        <h2 class="layer-title">GORGEOUS PARTY WEAR</h2>
+        <h2 class="layer-title">Gorgeous Party Wear</h2>
         <div class="product-grid" id="partyGrid"></div>
 
-        <h2 class="layer-title">EXCLUSIVE BRIDAL LAYER</h2>
+        <h2 class="layer-title">Exclusive Bridal Layer</h2>
         <div class="product-grid" id="bridalGrid"></div>
 
-        <h2 class="layer-title">LUXURY SILK SERIES</h2>
+        <h2 class="layer-title">Luxury Silk Series</h2>
         <div class="product-grid" id="silkGrid"></div>
     </div>
 
-    <div class="detail-modal" id="pModal">
-        <div class="detail-content">
-            <span class="close-btn" onclick="closeP()">&times;</span>
-            <div class="detail-img-side" id="modalImgArea"></div>
-            <div class="detail-info-side">
-                <p style="color: #888; font-size: 13px; text-transform: uppercase;">Premium Collection</p>
-                <h2 class="m-title" id="mTitle">Product Name</h2>
-                <div class="m-price" id="mPrice">৳ 0.00</div>
-                <div class="m-code" id="mCode">Code: 000</div>
-                
-                <div class="detail-list">
-                    <p><b>Collection:</b> <span id="mColl"></span></p>
-                    <p><b>Fabric:</b> <span id="mFab"></span></p>
-                    <p><b>Work type:</b> <span id="mWork"></span></p>
-                    <p><b>Color:</b> <span id="mColor"></span></p>
-                    <p><b>Includes:</b> <span id="mInc"></span></p>
-                    <p><b>Components:</b> <span id="mComp"></span></p>
-                    <p><b>Fit:</b> <span id="mFit"></span></p>
-                    <p><b>Fabric Care:</b> <span id="mCare"></span></p>
+    <div class="modal" id="pModal">
+        <div class="modal-content">
+            <span style="position:absolute; top:20px; right:25px; font-size:35px; cursor:pointer;" onclick="closeP()">&times;</span>
+            <div class="modal-img" id="mImg"></div>
+            <div class="modal-info">
+                <h2 id="mTitle" style="font-size:28px; margin-bottom:10px;">Product Name</h2>
+                <span id="mPrice" style="font-size:24px; color:#8e6d10; font-weight:700;">৳ 0.00</span>
+                <span id="mCode" class="m-code">Code: 000000</span>
+                <div class="m-list">
+                    <p><b>Collection:</b> <span id="mColl">Muslin</span></p>
+                    <p><b>Fabric:</b> <span id="mFab">Cotton</span></p>
+                    <p><b>Work type:</b> <span id="mWork">Print</span></p>
+                    <p><b>Color:</b> <span id="mColor">MULTI</span></p>
+                    <p><b>Includes:</b> <span id="mInc">Saree Only</span></p>
+                    <p><b>Components:</b> <span>1</span></p>
+                    <p><b>Fit:</b> <span>Free Size</span></p>
+                    <p><b>Fabric Care:</b> <span>Dry Clean Only</span></p>
                 </div>
-                <a href="#" id="waLink" target="_blank" class="wa-btn"><i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP</a>
+                <a href="#" id="waLink" target="_blank" class="wa-order-btn">ORDER VIA WHATSAPP</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-main">
+        <div class="footer-grid">
             <div class="footer-col">
                 <h3>LUXERA STUDIO</h3>
-                <p>Zindabazar, Sylhet City, BD</p>
-                <p>+880 1961-454604</p>
+                <p>The premier destination for luxury ethnic wear in Sylhet. We specialize in handcrafted sarees.</p>
+                <p style="margin-top:20px;"><i class="fas fa-map-marker-alt"></i> Zindabazar, Sylhet, BD</p>
             </div>
             <div class="footer-col">
-                <h3>CONTACT US</h3>
-                <a href="#" class="c-item"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
-                <a href="#" class="c-item"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+                <h3>Customer Support</h3>
+                <a href="#" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp: +880 1961-454604</a>
+                <a href="#" class="footer-link"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+                <a href="#" class="footer-link"><i class="fas fa-envelope"></i> Email Support</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // আপনার ২৪টি শাড়ির ডাটাবেজ
-        const products = [
-            // Party Wear (8টি)
-            { cat: 'partyGrid', code: 'PT-101', name: 'Party Silk Saree', price: '5,500', img: '', coll: 'Party 2026', fab: 'Silk', work: 'Stone', color: 'Blue', inc: 'Saree', comp: '1', fit: 'Free', care: 'Dry' },
-            // Bridal (8টি)
-            { cat: 'bridalGrid', code: 'BR-201', name: 'Bridal Katan', price: '15,000', img: '', coll: 'Bridal', fab: 'Katan', work: 'Zari', color: 'Red', inc: 'Saree & Blouse', comp: '2', fit: 'Free', care: 'Dry wash' },
-            // Silk (8টি)
-            { cat: 'silkGrid', code: 'SL-301', name: 'Luxury Soft Silk', price: '8,500', img: '', coll: 'Silk Series', fab: 'Soft Silk', work: 'Print', color: 'Pink', inc: 'Saree', comp: '1', fit: 'Free', care: 'Dry' }
-            // (আপনি এভাবে আরও শাড়ি নিচে অ্যাড করবেন)
+        // ২৪টি প্রোডাক্ট জেনারেট করার ফাংশন (৩টি লেয়ার)
+        const categories = [
+            { id: 'partyGrid', prefix: 'PT', price: 5000 },
+            { id: 'bridalGrid', prefix: 'BR', price: 15000 },
+            { id: 'silkGrid', prefix: 'SL', price: 8000 }
         ];
 
-        function loadProducts() {
-            products.forEach((p, index) => {
-                const grid = document.getElementById(p.cat);
-                if(grid) {
-                    grid.innerHTML += `
-                        <div class="product-card" onclick="openP(${index})">
-                            <div class="img-box" style="background-image: url('${p.img}')">${p.img?'':'IMAGE'}</div>
-                            <p style="font-size:11px; color:#d9534f; font-weight:600;">Code: ${p.code}</p>
-                            <h3 style="font-size:16px; margin:8px 0;">${p.name}</h3>
-                            <p style="color:#8e6d10; font-weight:700;">৳ ${p.price}</p>
-                        </div>
-                    `;
-                }
-            });
-        }
-        loadProducts();
+        categories.forEach(cat => {
+            const grid = document.getElementById(cat.id);
+            for(let i=1; i<=8; i++) {
+                let code = `${cat.prefix}-${100+i}`;
+                let name = `Luxera ${cat.prefix} Exclusive ${i}`;
+                let price = cat.price + (i*400);
+                grid.innerHTML += `
+                    <div class="product-card" onclick="openP('${name}', '${price}', '${code}')">
+                        <div class="img-box">IMAGE</div>
+                        <p style="font-size:11px; color:#d9534f; font-weight:600;">Code: ${code}</p>
+                        <h3>${name}</h3>
+                        <p style="color:#8e6d10; font-weight:700; font-size:18px;">৳ ${price}</p>
+                    </div>
+                `;
+            }
+        });
 
-        function openP(index) {
-            const p = products[index];
-            document.getElementById('mTitle').innerText = p.name;
-            document.getElementById('mPrice').innerText = "৳ " + p.price;
-            document.getElementById('mCode').innerText = "Code: " + p.code;
-            document.getElementById('mColl').innerText = p.coll;
-            document.getElementById('mFab').innerText = p.fab;
-            document.getElementById('mWork').innerText = p.work;
-            document.getElementById('mColor').innerText = p.color;
-            document.getElementById('mInc').innerText = p.inc;
-            document.getElementById('mComp').innerText = p.comp;
-            document.getElementById('mFit').innerText = p.fit;
-            document.getElementById('mCare').innerText = p.care;
-            document.getElementById('modalImgArea').style.backgroundImage = `url('${p.img}')`;
-            document.getElementById('waLink').href = "https://wa.me/8801961454604?text=Order Code: " + p.code;
+        function openP(n, p, c) {
+            document.getElementById('mTitle').innerText = n;
+            document.getElementById('mPrice').innerText = "৳ " + p;
+            document.getElementById('mCode').innerText = "Code: " + c;
+            document.getElementById('waLink').href = "https://wa.me/8801961454604?text=Order: " + n + " (" + c + ")";
             document.getElementById('pModal').style.display = 'flex';
         }
         function closeP() { document.getElementById('pModal').style.display = 'none'; }
-        window.onclick = (e) => { if(e.target == document.getElementById('pModal')) closeP(); }
+        
+        // স্লাইডশো লজিক
+        let sIdx = 0;
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            slides[sIdx].classList.remove('active');
+            sIdx = (sIdx + 1) % slides.length;
+            slides[sIdx].classList.add('active');
+        }, 5000);
+
+        function search() {
+            let v = document.getElementById('sInput').value.toUpperCase();
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.style.display = card.innerText.toUpperCase().includes(v) ? "block" : "none";
+            });
+        }
     </script>
 </body>
 </html>
