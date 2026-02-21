@@ -3,85 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxera Studio | Official Premium Store</title>
+    <title>Luxera Studio | Premium Ethnic Wear</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Base Setup --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; border: none; text-decoration: none; }
+        /* ১. বেসিক সেটআপ ও কালার স্কিম */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; border: none; text-decoration: none; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: #fffdfa; color: #1a1a1a; overflow-x: hidden; }
         h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
 
-        /* --- Header Section --- */
-        header { background: #fff; padding: 30px 5% 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .header-left-icons { display: flex; gap: 15px; width: 150px; }
+        /* ২. হেডার: লোগো মাঝখানে, আইকন বামে */
+        header { background: #fff; padding: 25px 5% 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .header-left-icons { display: flex; gap: 12px; width: 150px; }
         .glass-icon {
-            background: #fff; border: 1px solid rgba(142, 109, 16, 0.2); width: 45px; height: 45px;
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            color: #8e6d10; font-size: 19px; cursor: pointer; transition: 0.3s;
+            background: #fff; border: 1px solid rgba(142, 109, 16, 0.2); width: 42px; height: 42px;
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            color: #8e6d10; font-size: 18px; cursor: pointer; transition: 0.3s;
         }
-        .logo { font-size: 35px; color: #8e6d10; letter-spacing: 6px; font-weight: 900; text-transform: uppercase; flex-grow: 1; text-align: center; }
+        .logo { font-size: 32px; color: #8e6d10; letter-spacing: 5px; font-weight: 900; text-transform: uppercase; text-align: center; flex-grow: 1; }
         .header-right-filler { width: 150px; }
 
-        .search-row { display: flex; justify-content: center; margin-bottom: 25px; }
-        .search-container { width: 100%; max-width: 750px; position: relative; }
-        .search-bar { width: 100%; padding: 15px 25px 15px 60px; border: 1px solid #eee; border-radius: 40px; background: #fbfbfb; font-size: 15px; }
-        .search-icon { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: #8e6d10; font-size: 20px; }
+        /* ৩. সার্চ বার */
+        .search-row { display: flex; justify-content: center; margin-bottom: 20px; }
+        .search-container { width: 100%; max-width: 600px; position: relative; }
+        .search-bar { width: 100%; padding: 12px 20px 12px 50px; border: 1px solid #f0f0f0; border-radius: 30px; background: #fbfbfb; font-size: 14px; }
+        .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #8e6d10; }
 
-        .category-bar { display: flex; justify-content: space-between; padding: 20px 0; background: #fff; border-top: 1px solid #f2f2f2; overflow-x: auto; }
-        .cat-item { color: #444; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; flex: 1; text-align: center; white-space: nowrap; padding: 0 15px; }
+        /* ৪. ক্লিকযোগ্য ক্যাটাগরি মেনু */
+        .category-bar { display: flex; justify-content: space-between; padding: 15px 0; border-top: 1px solid #f2f2f2; overflow-x: auto; white-space: nowrap; }
+        .cat-item { color: #444; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 0 20px; cursor: pointer; transition: 0.3s; }
+        .cat-item:hover { color: #8e6d10; }
 
-        /* --- Slideshow Section --- */
-        .slider { width: 100%; height: 500px; position: relative; overflow: hidden; background: #000; }
+        /* ৫. স্লাইডশো (রাজকীয় লুক) */
+        .slider { width: 100%; height: 450px; position: relative; overflow: hidden; background: #000; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 1s ease-in-out; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
         .slide.active { opacity: 1; }
-        .slide-content h2 { font-size: 50px; margin-bottom: 10px; letter-spacing: 5px; }
-        .shop-btn { padding: 12px 30px; background: #8e6d10; color: #fff; display: inline-block; margin-top: 20px; font-weight: 600; }
+        .slide-content h2 { font-size: 45px; letter-spacing: 5px; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-        /* --- Products Grid & Layers --- */
-        .container { padding: 60px 8%; }
-        .layer-title { font-size: 30px; margin: 50px 0 30px; text-align: center; letter-spacing: 5px; text-transform: uppercase; }
-        .layer-title::after { content: ''; display: block; width: 60px; height: 3px; background: #8e6d10; margin: 15px auto; }
+        /* ৬. প্রোডাক্ট গ্রিড (২৪টি বক্স এবং ৩টি লেয়ার) */
+        .container { padding: 40px 8%; }
+        .layer-title { font-size: 28px; text-align: center; margin: 60px 0 35px; text-transform: uppercase; letter-spacing: 4px; position: relative; }
+        .layer-title::after { content: ''; display: block; width: 50px; height: 2px; background: #8e6d10; margin: 15px auto; }
         
-        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 60px; }
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 50px; }
         
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        /* ফ্লোটিং অ্যানিমেশন */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         .product-card {
-            background: #fff; border: 1px solid #f1f1f1; padding: 20px; border-radius: 18px;
-            text-align: center; cursor: pointer; transition: 0.4s; animation: float 4s ease-in-out infinite;
+            background: #fff; border: 1px solid #f1f1f1; padding: 20px; border-radius: 15px;
+            text-align: center; cursor: pointer; animation: float 4s ease-in-out infinite; transition: 0.3s;
         }
-        .product-card:hover { animation-play-state: paused; transform: scale(1.05); border-color: #d4af37; box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        .img-box { width: 100%; height: 300px; background: #f9f9f9; border-radius: 12px; margin-bottom: 15px; background-size: cover; background-position: center; }
+        .product-card:hover { transform: scale(1.05); border-color: #d4af37; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .img-box { width: 100%; height: 280px; background: #f8f8f8; border-radius: 10px; margin-bottom: 15px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #ccc; }
 
-        /* --- Detail Modal (Matching your image) --- */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center; }
-        .modal-content { background: #fff; width: 95%; max-width: 1100px; display: flex; border-radius: 15px; overflow: hidden; position: relative; max-height: 90vh; }
+        /* ৭. ডিটেইলস পপ-আপ (আপনার ছবির মতো) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
+        .modal-content { background: #fff; width: 95%; max-width: 1000px; display: flex; border-radius: 15px; overflow: hidden; position: relative; max-height: 90vh; }
         .modal-img { width: 45%; background: #eee; background-size: cover; background-position: center; }
-        .modal-info { width: 55%; padding: 50px; overflow-y: auto; }
-        .m-code { color: #d9534f; font-weight: 600; margin-bottom: 15px; display: block; }
-        .m-list p { margin-bottom: 10px; font-size: 14px; display: flex; border-bottom: 1px solid #f5f5f5; padding-bottom: 5px; }
+        .modal-info { width: 55%; padding: 40px; overflow-y: auto; }
+        
+        .m-code { color: #d9534f; font-weight: 600; font-size: 14px; margin-bottom: 10px; display: block; }
+        .m-list p { margin-bottom: 10px; font-size: 14px; border-bottom: 1px solid #f5f5f5; padding-bottom: 5px; display: flex; }
         .m-list b { width: 160px; color: #000; }
-        .wa-order-btn { background: #000; color: #fff; width: 100%; padding: 18px; display: block; text-align: center; font-weight: 600; margin-top: 30px; border-radius: 5px; }
+        .wa-btn { background: #000; color: #fff; width: 100%; padding: 18px; display: block; text-align: center; font-weight: 600; margin-top: 30px; border-radius: 5px; letter-spacing: 1px; }
 
-        /* --- Huge Footer --- */
-        footer { background: #000; color: #fff; padding: 80px 8% 40px; border-top: 5px solid #8e6d10; }
+        /* ৮. বিশাল ব্ল্যাক ফুটার */
+        footer { background: #000; color: #fff; padding: 70px 8% 40px; border-top: 5px solid #8e6d10; margin-top: 60px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
-        .footer-col h3 { color: #d4af37; margin-bottom: 25px; letter-spacing: 2px; }
-        .footer-col p { color: #bbb; font-size: 14px; line-height: 1.8; }
-        .footer-link { display: flex; align-items: center; color: #fff; margin-bottom: 15px; transition: 0.3s; }
-        .footer-link:hover { color: #d4af37; padding-left: 10px; }
-        .footer-link i { margin-right: 15px; color: #8e6d10; }
+        .footer-col h3 { color: #d4af37; margin-bottom: 25px; font-size: 20px; }
+        .footer-col p { color: #bbb; font-size: 14px; line-height: 1.8; margin-bottom: 15px; }
+        .footer-item { display: flex; align-items: center; color: #fff; margin-bottom: 12px; font-size: 14px; }
+        .footer-item i { margin-right: 15px; color: #d4af37; font-size: 18px; }
 
-        /* --- Mobile Responsive --- */
+        /* ৯. মোবাইল রেসপন্সিভনেস */
         @media (max-width: 768px) {
-            .logo { font-size: 24px; letter-spacing: 3px; }
-            .header-left-icons, .header-right-filler { width: 90px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .modal-content { flex-direction: column; height: 95vh; }
-            .modal-img { width: 100%; height: 300px; }
-            .modal-info { width: 100%; padding: 30px; }
+            .logo { font-size: 22px; letter-spacing: 2px; }
+            .header-left-icons, .header-right-filler { width: 80px; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* মোবাইলে ২লি বক্স */
+            .img-box { height: 180px; }
+            .modal-content { flex-direction: column; }
+            .modal-img { width: 100%; height: 250px; }
+            .modal-info { width: 100%; padding: 25px; }
             .slider { height: 300px; }
             .slide-content h2 { font-size: 28px; }
         }
@@ -101,65 +105,59 @@
         <div class="search-row">
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="sInput" class="search-bar" placeholder="Search by code..." onkeyup="search()">
+                <input type="text" id="sInput" class="search-bar" placeholder="Search by Saree Code..." onkeyup="search()">
             </div>
         </div>
         <nav class="category-bar">
+            <a href="#party-sec" class="cat-item">Party Wear</a>
+            <a href="#bridal-sec" class="cat-item">Bridal Layer</a>
+            <a href="#silk-sec" class="cat-item">Luxury Silk</a>
             <a href="#" class="cat-item">New Arrivals</a>
-            <a href="#" class="cat-item">Party Wear</a>
-            <a href="#" class="cat-item">Bridal Layer</a>
-            <a href="#" class="cat-item">Luxury Silk</a>
             <a href="#" class="cat-item">Limited Edition</a>
+            <a href="#" class="cat-item">Contact Us</a>
         </nav>
     </header>
 
     <div class="slider">
         <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200')">
-            <div class="slide-content">
-                <h2>Royal Collection 2026</h2>
-                <p>Exquisite Sarees for Your Special Moments</p>
-                <a href="#partyGrid" class="shop-btn">Shop Now</a>
-            </div>
+            <div class="slide-content"><h2>Royal Silk 2026</h2><p>Experience Premium Elegance</p></div>
         </div>
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1583391733959-1c5861b369c6?w=1200')">
-            <div class="slide-content">
-                <h2>Bridal Heritage</h2>
-                <p>Pure Elegance in Every Thread</p>
-                <a href="#bridalGrid" class="shop-btn">View More</a>
-            </div>
+            <div class="slide-content"><h2>Bridal Heritage</h2><p>Designed for Your Big Day</p></div>
         </div>
     </div>
 
     <div class="container">
-        <h2 class="layer-title">Gorgeous Party Wear</h2>
-        <div class="product-grid" id="partyGrid"></div>
+        
+        <h2 class="layer-title" id="party-sec">Gorgeous Party Wear</h2>
+        <div class="product-grid" id="pGrid1">
+            </div>
 
-        <h2 class="layer-title">Exclusive Bridal Layer</h2>
-        <div class="product-grid" id="bridalGrid"></div>
+        <h2 class="layer-title" id="bridal-sec">Exclusive Bridal Layer</h2>
+        <div class="product-grid" id="pGrid2">
+            </div>
 
-        <h2 class="layer-title">Luxury Silk Series</h2>
-        <div class="product-grid" id="silkGrid"></div>
+        <h2 class="layer-title" id="silk-sec">Luxury Silk Series</h2>
+        <div class="product-grid" id="pGrid3">
+            </div>
     </div>
 
     <div class="modal" id="pModal">
         <div class="modal-content">
-            <span style="position:absolute; top:20px; right:25px; font-size:35px; cursor:pointer;" onclick="closeP()">&times;</span>
+            <span style="position:absolute; top:15px; right:20px; font-size:35px; cursor:pointer; color:#333; z-index:10;" onclick="closeP()">&times;</span>
             <div class="modal-img" id="mImg"></div>
             <div class="modal-info">
-                <h2 id="mTitle" style="font-size:28px; margin-bottom:10px;">Product Name</h2>
-                <span id="mPrice" style="font-size:24px; color:#8e6d10; font-weight:700;">৳ 0.00</span>
-                <span id="mCode" class="m-code">Code: 000000</span>
+                <h2 id="mTitle" style="margin-bottom:10px;">Product Name</h2>
+                <p id="mPrice" style="font-size:24px; color:#8e6d10; font-weight:700; margin-bottom:5px;">৳ 0</p>
+                <span id="mCode" class="m-code">Code: 000</span>
                 <div class="m-list">
-                    <p><b>Collection:</b> <span id="mColl">Muslin</span></p>
-                    <p><b>Fabric:</b> <span id="mFab">Cotton</span></p>
-                    <p><b>Work type:</b> <span id="mWork">Print</span></p>
-                    <p><b>Color:</b> <span id="mColor">MULTI</span></p>
-                    <p><b>Includes:</b> <span id="mInc">Saree Only</span></p>
-                    <p><b>Components:</b> <span>1</span></p>
-                    <p><b>Fit:</b> <span>Free Size</span></p>
-                    <p><b>Fabric Care:</b> <span>Dry Clean Only</span></p>
+                    <p><b>Collection:</b> <span id="mColl">Luxera Exclusive</span></p>
+                    <p><b>Fabric:</b> <span id="mFab">Pure Quality</span></p>
+                    <p><b>Work Type:</b> <span id="mWork">Handicraft</span></p>
+                    <p><b>Care:</b> <span>Dry Clean Only</span></p>
+                    <p><b>Fit:</b> <span>Free Size (6 Yards)</span></p>
                 </div>
-                <a href="#" id="waLink" target="_blank" class="wa-order-btn">ORDER VIA WHATSAPP</a>
+                <a href="#" id="waLink" target="_blank" class="wa-btn">ORDER VIA WHATSAPP</a>
             </div>
         </div>
     </div>
@@ -168,67 +166,95 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h3>LUXERA STUDIO</h3>
-                <p>The premier destination for luxury ethnic wear in Sylhet. We specialize in handcrafted sarees.</p>
-                <p style="margin-top:20px;"><i class="fas fa-map-marker-alt"></i> Zindabazar, Sylhet, BD</p>
+                <p>Luxera Studio defines the art of ethnic luxury. We bring you the most exquisite saree collection handcrafted to perfection.</p>
+                <div class="footer-item"><i class="fas fa-map-marker-alt"></i> Zindabazar, Sylhet, Bangladesh</div>
+                <div class="footer-item"><i class="fas fa-phone-alt"></i> +880 1961-454604</div>
             </div>
             <div class="footer-col">
-                <h3>Customer Support</h3>
-                <a href="#" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp: +880 1961-454604</a>
-                <a href="#" class="footer-link"><i class="fab fa-facebook-messenger"></i> Messenger</a>
-                <a href="#" class="footer-link"><i class="fas fa-envelope"></i> Email Support</a>
+                <h3>CUSTOMER SERVICE</h3>
+                <a href="#" class="footer-item"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+                <a href="#" class="footer-item"><i class="fab fa-facebook-messenger"></i> Live Messenger</a>
+                <a href="#" class="footer-item"><i class="fas fa-truck"></i> Fast Home Delivery</a>
             </div>
+        </div>
+        <div style="text-align:center; margin-top:50px; padding-top:20px; border-top:1px solid #222; font-size:12px; color:#666;">
+            &copy; 2026 LUXERA STUDIO | SYLHET | ALL RIGHTS RESERVED.
         </div>
     </footer>
 
     <script>
-        // ২৪টি প্রোডাক্ট জেনারেট করার ফাংশন (৩টি লেয়ার)
-        const categories = [
-            { id: 'partyGrid', prefix: 'PT', price: 5000 },
-            { id: 'bridalGrid', prefix: 'BR', price: 15000 },
-            { id: 'silkGrid', prefix: 'SL', price: 8000 }
+        // পণ্য জেনারেটর (২৪টি বক্সের জন্য ডাটা)
+        const products = [
+            // সেকশন ১ (৮টি)
+            { grid: 'pGrid1', code: 'PT-101', name: 'Party Muslin Saree', price: '5,500' },
+            { grid: 'pGrid1', code: 'PT-102', name: 'Designer Silk Party', price: '6,800' },
+            { grid: 'pGrid1', code: 'PT-103', name: 'Floral Party Piece', price: '4,200' },
+            { grid: 'pGrid1', code: 'PT-104', name: 'Stoned Georgette', price: '7,500' },
+            { grid: 'pGrid1', code: 'PT-105', name: 'Evening Special', price: '5,900' },
+            { grid: 'pGrid1', code: 'PT-106', name: 'Modern Chiffon', price: '4,800' },
+            { grid: 'pGrid1', code: 'PT-107', name: 'Glitzy Party Wear', price: '8,200' },
+            { grid: 'pGrid1', code: 'PT-108', name: 'Classic Party Silk', price: '6,300' },
+            
+            // সেকশন ২ (৮টি)
+            { grid: 'pGrid2', code: 'BR-201', name: 'Royal Bridal Katan', price: '18,500' },
+            { grid: 'pGrid2', code: 'BR-202', name: 'Red Heritage Bridal', price: '25,000' },
+            { grid: 'pGrid2', code: 'BR-203', name: 'Banarasi Bridal', price: '22,800' },
+            { grid: 'pGrid2', code: 'BR-204', name: 'Exclusive Wedding Wear', price: '32,000' },
+            { grid: 'pGrid2', code: 'BR-205', name: 'Maroon Velvet Bridal', price: '28,500' },
+            { grid: 'pGrid2', code: 'BR-206', name: 'Zari Work Masterpiece', price: '19,200' },
+            { grid: 'pGrid2', code: 'BR-207', name: 'Traditional Katan', price: '15,500' },
+            { grid: 'pGrid2', code: 'BR-208', name: 'Luxury Bridal Silk', price: '21,000' },
+
+            // সেকশন ৩ (৮টি)
+            { grid: 'pGrid3', code: 'SL-301', name: 'Soft Pure Silk', price: '9,500' },
+            { grid: 'pGrid3', code: 'SL-302', name: 'Pink Luxury Silk', price: '8,200' },
+            { grid: 'pGrid3', code: 'SL-303', name: 'Blue Sapphire Silk', price: '10,800' },
+            { grid: 'pGrid3', code: 'SL-304', name: 'Handloom Soft Silk', price: '7,400' },
+            { grid: 'pGrid3', code: 'SL-305', name: 'Gold Embellished Silk', price: '12,500' },
+            { grid: 'pGrid3', code: 'SL-306', name: 'Digital Print Silk', price: '6,900' },
+            { grid: 'pGrid3', code: 'SL-307', name: 'Premium Raw Silk', price: '11,200' },
+            { grid: 'pGrid3', code: 'SL-308', name: 'Classy Silk Series', price: '9,800' }
         ];
 
-        categories.forEach(cat => {
-            const grid = document.getElementById(cat.id);
-            for(let i=1; i<=8; i++) {
-                let code = `${cat.prefix}-${100+i}`;
-                let name = `Luxera ${cat.prefix} Exclusive ${i}`;
-                let price = cat.price + (i*400);
-                grid.innerHTML += `
-                    <div class="product-card" onclick="openP('${name}', '${price}', '${code}')">
-                        <div class="img-box">IMAGE</div>
-                        <p style="font-size:11px; color:#d9534f; font-weight:600;">Code: ${code}</p>
-                        <h3>${name}</h3>
-                        <p style="color:#8e6d10; font-weight:700; font-size:18px;">৳ ${price}</p>
-                    </div>
-                `;
-            }
+        // ২৪টি বক্স রেন্ডার করা
+        products.forEach(p => {
+            document.getElementById(p.grid).innerHTML += `
+                <div class="product-card" onclick="openP('${p.name}', '${p.price}', '${p.code}')">
+                    <div class="img-box">NO IMAGE</div>
+                    <p style="color:#d9534f; font-weight:600; font-size:11px; margin-bottom:5px;">Code: ${p.code}</p>
+                    <h3 style="font-size:16px; margin-bottom:8px;">${p.name}</h3>
+                    <p style="color:#8e6d10; font-weight:700; font-size:18px;">৳ ${p.price}</p>
+                </div>
+            `;
         });
 
+        // পপ-আপ ফাংশন
         function openP(n, p, c) {
             document.getElementById('mTitle').innerText = n;
             document.getElementById('mPrice').innerText = "৳ " + p;
             document.getElementById('mCode').innerText = "Code: " + c;
-            document.getElementById('waLink').href = "https://wa.me/8801961454604?text=Order: " + n + " (" + c + ")";
+            document.getElementById('waLink').href = "https://wa.me/8801961454604?text=Hello! I want to order: " + n + " (Code: " + c + ")";
             document.getElementById('pModal').style.display = 'flex';
         }
-        function closeP() { document.getElementById('pModal').style.display = 'none'; }
-        
-        // স্লাইডশো লজিক
-        let sIdx = 0;
-        const slides = document.querySelectorAll('.slide');
-        setInterval(() => {
-            slides[sIdx].classList.remove('active');
-            sIdx = (sIdx + 1) % slides.length;
-            slides[sIdx].classList.add('active');
-        }, 5000);
 
+        function closeP() { document.getElementById('pModal').style.display = 'none'; }
+
+        // সার্চ ফাংশন
         function search() {
-            let v = document.getElementById('sInput').value.toUpperCase();
+            let val = document.getElementById('sInput').value.toUpperCase();
             document.querySelectorAll('.product-card').forEach(card => {
-                card.style.display = card.innerText.toUpperCase().includes(v) ? "block" : "none";
+                card.style.display = card.innerText.toUpperCase().includes(val) ? "block" : "none";
             });
         }
+
+        // স্লাইডশো লজিক
+        let slideIdx = 0;
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            slides[slideIdx].classList.remove('active');
+            slideIdx = (slideIdx + 1) % slides.length;
+            slides[slideIdx].classList.add('active');
+        }, 5000);
     </script>
 </body>
 </html>
