@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxera Studio | Premium Edition</title>
+    <title>Luxera Studio | Official Masterpiece</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
@@ -11,60 +11,76 @@
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; border: none; text-decoration: none; scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; background-color: #fffdfa; color: #1a1a1a; overflow-x: hidden; }
 
-        /* --- Header & Glassy Effects --- */
-        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 20px 5%; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .header-top { display: flex; justify-content: space-between; align-items: center; }
+        /* --- Header Logic --- */
+        header { background: #fff; padding: 20px 5% 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         
-        .menu-btn { font-size: 24px; color: #8e6d10; cursor: pointer; display: none; } /* Mobile Only */
-        .logo { font-size: 30px; color: #8e6d10; letter-spacing: 5px; font-weight: 900; font-family: 'Playfair Display', serif; text-transform: uppercase; }
+        /* মোবাইলের ৩-লাইন মেনু বাটন (পিসিতে লুকানো) */
+        .mobile-menu-btn { display: none; font-size: 24px; color: #8e6d10; cursor: pointer; }
         
-        .header-right { display: flex; gap: 15px; }
-        .icon-box { background: rgba(142, 109, 16, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #8e6d10; }
+        .logo { font-size: 32px; color: #8e6d10; letter-spacing: 5px; font-weight: 900; font-family: 'Playfair Display', serif; text-transform: uppercase; text-align: center; flex-grow: 1; }
+        
+        .header-right { display: flex; gap: 15px; width: 120px; justify-content: flex-end; }
+        .icon-box { background: rgba(142, 109, 16, 0.05); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #8e6d10; cursor: pointer; transition: 0.3s; }
+        .icon-box:hover { background: #8e6d10; color: #fff; }
 
-        /* --- Side Navigation (Mobile Menu) --- */
-        .side-nav { position: fixed; top: 0; left: -100%; width: 280px; height: 100%; background: #fff; z-index: 2000; transition: 0.4s; padding: 40px 25px; box-shadow: 10px 0 30px rgba(0,0,0,0.1); }
+        /* --- Desktop Category Bar --- */
+        .desktop-nav { display: flex; justify-content: center; padding: 15px 0; border-top: 1px solid #f2f2f2; }
+        .cat-item { color: #444; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 0 20px; transition: 0.3s; }
+        .cat-item:hover { color: #8e6d10; }
+
+        /* --- Mobile Side Menu (তিন লাইনে ক্লিক করলে যা আসবে) --- */
+        .side-nav { position: fixed; top: 0; left: -100%; width: 280px; height: 100%; background: #fff; z-index: 5000; transition: 0.4s; padding: 40px 25px; box-shadow: 10px 0 30px rgba(0,0,0,0.2); }
         .side-nav.active { left: 0; }
-        .side-nav h3 { margin-bottom: 30px; color: #8e6d10; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .side-nav h3 { font-family: 'Playfair Display'; color: #8e6d10; margin-bottom: 30px; border-bottom: 2px solid #f2f2f2; padding-bottom: 10px; }
         .side-nav a { display: block; padding: 15px 0; color: #333; font-weight: 500; border-bottom: 1px solid #f9f9f9; }
-        .close-menu { position: absolute; top: 20px; right: 20px; font-size: 25px; cursor: pointer; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: #8e6d10; }
 
-        /* --- Premium Slideshow (Larger) --- */
-        .hero { width: 100%; height: 700px; position: relative; overflow: hidden; }
-        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 1.5s ease-in-out; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
+        /* --- Auth Modal (Login/Signup) --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 6000; align-items: center; justify-content: center; }
+        .auth-card { background: #fff; padding: 40px; width: 90%; max-width: 400px; border-radius: 20px; text-align: center; }
+        .auth-card input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #eee; border-radius: 8px; }
+        .auth-submit { background: #000; color: #fff; width: 100%; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px; }
+
+        /* --- Slideshow --- */
+        .hero { width: 100%; height: 600px; position: relative; overflow: hidden; background: #000; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 1s ease-in-out; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
         .slide.active { opacity: 1; }
-        .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.3); }
-        .slide-content { position: relative; text-align: center; color: #fff; z-index: 10; }
-        .slide-content h2 { font-size: 60px; font-family: 'Playfair Display', serif; letter-spacing: 8px; margin-bottom: 15px; }
-        .glass-tag { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(15px); padding: 10px 25px; border-radius: 50px; display: inline-block; font-size: 14px; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.3); }
+        .slide h2 { font-size: 50px; font-family: 'Playfair Display'; letter-spacing: 5px; }
 
         /* --- Product Grid --- */
-        .container { padding: 80px 8%; }
-        .layer-title { font-size: 32px; text-align: center; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 5px; font-family: 'Playfair Display', serif; }
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 100px; }
-        
-        .card { background: #fff; padding: 20px; border-radius: 20px; border: 1px solid #f1f1f1; text-align: center; animation: float 4s ease-in-out infinite; cursor: pointer; transition: 0.3s; }
-        .card:hover { transform: scale(1.05); border-color: #d4af37; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-        .img-area { width: 100%; height: 320px; background: #f9f9f9; border-radius: 15px; margin-bottom: 15px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #ccc; }
+        .container { padding: 60px 8%; }
+        .section-title { font-size: 30px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 4px; }
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 80px; }
+        .card { background: #fff; border: 1px solid #f1f1f1; padding: 20px; border-radius: 15px; text-align: center; animation: float 5s ease-in-out infinite; cursor: pointer; transition: 0.3s; }
+        .card:hover { transform: scale(1.05); border-color: #d4af37; }
+        .img-placeholder { width: 100%; height: 300px; background: #f9f9f9; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: #ccc; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
-        /* --- Huge Black Footer --- */
-        footer { background: #000; color: #fff; padding: 100px 8% 40px; border-top: 5px solid #8e6d10; }
-        .f-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; }
-        .f-col h3 { color: #d4af37; font-size: 24px; margin-bottom: 30px; font-family: 'Playfair Display', serif; }
-        .f-col p { color: #888; line-height: 2; font-size: 15px; }
-        .f-contact { margin-top: 25px; }
-        .f-contact-item { display: flex; align-items: center; margin-bottom: 15px; color: #fff; }
-        .f-contact-item i { width: 40px; height: 40px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; color: #d4af37; border: 1px solid #222; }
+        /* --- Wide Black Footer --- */
+        footer { background: #000; color: #fff; padding: 100px 8% 50px; border-top: 4px solid #8e6d10; margin-top: 50px; }
+        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .f-col h3 { color: #d4af37; margin-bottom: 25px; font-family: 'Playfair Display'; font-size: 24px; }
+        .f-col p { color: #888; line-height: 1.8; font-size: 14px; margin-bottom: 15px; }
+        
+        .sub-bar { display: flex; margin-top: 20px; }
+        .sub-bar input { padding: 15px; border-radius: 5px 0 0 5px; width: 100%; background: #111; color: #fff; border: 1px solid #333; }
+        .sub-bar button { padding: 15px 25px; background: #8e6d10; color: #fff; border-radius: 0 5px 5px 0; cursor: pointer; font-weight: 600; }
 
-        /* --- Mobile Responsiveness --- */
+        .support-icons { display: flex; gap: 15px; margin-top: 25px; }
+        .s-icon { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; transition: 0.3s; }
+        .s-icon:hover { background: #8e6d10; transform: translateY(-5px); }
+
+        /* --- Mobile Responsive Logic --- */
         @media (max-width: 768px) {
-            .menu-btn { display: block; }
+            .mobile-menu-btn { display: block; width: 120px; } /* মোবাইলে ৩ লাইন দেখাবে */
+            .desktop-nav { display: none; } /* মোবাইলে উপরের সব লেখা গায়েব */
             .logo { font-size: 22px; }
-            .hero { height: 450px; }
-            .slide-content h2 { font-size: 32px; letter-spacing: 3px; }
             .grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .img-area { height: 200px; }
-            .container { padding: 40px 5%; }
+            .hero { height: 400px; }
+            .slide h2 { font-size: 30px; }
+            .f-grid { grid-template-columns: 1fr; gap: 40px; }
+            .img-placeholder { height: 180px; }
         }
     </style>
 </head>
@@ -72,102 +88,125 @@
 
     <header>
         <div class="header-top">
-            <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            
             <div class="logo">LUXERA STUDIO</div>
+            
             <div class="header-right">
-                <div class="icon-box"><i class="fas fa-search"></i></div>
+                <div class="icon-box" onclick="toggleAuth()"><i class="fas fa-user"></i></div>
                 <div class="icon-box"><i class="fas fa-shopping-bag"></i></div>
             </div>
         </div>
+        <nav class="desktop-nav">
+            <a href="#party" class="cat-item">Party Wear</a>
+            <a href="#bridal" class="cat-item">Bridal Layer</a>
+            <a href="#silk" class="cat-item">Luxury Silk</a>
+            <a href="#" class="cat-item">New Arrivals</a>
+            <a href="#" class="cat-item">Limited Edition</a>
+            <a href="#" class="cat-item">Contact Us</a>
+        </nav>
     </header>
 
     <div class="side-nav" id="sideNav">
-        <span class="close-menu" onclick="toggleMenu()">&times;</span>
-        <h3>CATEGORIES</h3>
+        <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <h3>LUXERA MENU</h3>
         <a href="#party" onclick="toggleMenu()">Party Wear</a>
         <a href="#bridal" onclick="toggleMenu()">Bridal Layer</a>
         <a href="#silk" onclick="toggleMenu()">Luxury Silk</a>
         <a href="#" onclick="toggleMenu()">New Arrivals</a>
+        <a href="#" onclick="toggleMenu()">Limited Edition</a>
         <a href="#" onclick="toggleMenu()">Contact Us</a>
     </div>
 
-    <div class="hero">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1600')">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <div class="glass-tag">ROYAL COLLECTION</div>
-                <h2>The Art of Silk</h2>
-            </div>
+    <div class="modal-overlay" id="authModal">
+        <div class="auth-card">
+            <span style="float:right; cursor:pointer;" onclick="toggleAuth()">&times;</span>
+            <h2 style="font-family:'Playfair Display'; margin-bottom:20px;">Customer Login</h2>
+            <input type="email" placeholder="Email Address">
+            <input type="password" placeholder="Password">
+            <button class="auth-submit">LOGIN / CREATE ID</button>
         </div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1583391733959-1c5861b369c6?w=1600')">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <div class="glass-tag">EXCLUSIVE BRIDAL</div>
-                <h2>Heritage Glamour</h2>
-            </div>
+    </div>
+
+    <div class="hero">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1600')">
+            <h2>Luxury Silk 2026</h2>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1583391733959-1c5861b369c6?w=1600')">
+            <h2>Bridal Heritage</h2>
         </div>
     </div>
 
     <div class="container">
-        <h2 class="layer-title" id="party">Gorgeous Party Wear</h2>
-        <div class="grid" id="grid1"></div>
+        <h2 class="section-title" id="party">Gorgeous Party Wear</h2>
+        <div class="grid" id="p1"></div>
 
-        <h2 class="layer-title" id="bridal">Exclusive Bridal Layer</h2>
-        <div class="grid" id="grid2"></div>
+        <h2 class="section-title" id="bridal">Exclusive Bridal Layer</h2>
+        <div class="grid" id="p2"></div>
 
-        <h2 class="layer-title" id="silk">Luxury Silk Series</h2>
-        <div class="grid" id="grid3"></div>
+        <h2 class="section-title" id="silk">Luxury Silk Series</h2>
+        <div class="grid" id="p3"></div>
     </div>
 
     <footer>
-        <div class="f-container">
+        <div class="f-grid">
             <div class="f-col">
                 <h3>LUXERA STUDIO</h3>
-                <p>আমরা বিশ্বাস করি আভিজাত্যে। সিলেটের শ্রেষ্ঠ প্রিমিয়াম এথনিক ওয়্যার গন্তব্য। প্রতিটি শাড়িতে আমরা ফুটিয়ে তুলি আপনার ব্যক্তিত্ব।</p>
-            </div>
-            <div class="f-col">
-                <h3>GET IN TOUCH</h3>
-                <div class="f-contact">
-                    <div class="f-contact-item"><i class="fas fa-map-marker-alt"></i> Zindabazar, Sylhet, BD</div>
-                    <div class="f-contact-item"><i class="fas fa-phone-alt"></i> +880 1961-454604</div>
-                    <div class="f-contact-item"><i class="fas fa-envelope"></i> support@luxerastudio.com</div>
-                    <div class="f-contact-item"><i class="fab fa-whatsapp"></i> WhatsApp Support</div>
+                <p>আমরা সিলেটের শ্রেষ্ঠ আভিজাত্যের প্রতীক। প্রতিটি শাড়িতে রাজকীয় ছোঁয়া। আমাদের নতুন কালেকশন সম্পর্কে জানতে সাবস্ক্রাইব করুন।</p>
+                <div class="sub-bar">
+                    <input type="email" placeholder="Your Email">
+                    <button>JOIN</button>
                 </div>
             </div>
+            <div class="f-col">
+                <h3>CONTACT US</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Zindabazar, Sylhet, BD</p>
+                <div class="support-icons">
+                    <a href="https://wa.me/8801961454604" target="_blank" class="s-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://m.me/yourid" target="_blank" class="s-icon"><i class="fab fa-facebook-messenger"></i></a>
+                    <a href="mailto:support@luxerastudio.com" class="s-icon"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="f-col">
+                <h3>QUICK LINKS</h3>
+                <p><a href="#" style="color:#888">Track Order</a></p>
+                <p><a href="#" style="color:#888">Return Policy</a></p>
+                <p><a href="#" style="color:#888">Privacy Policy</a></p>
+            </div>
         </div>
-        <div style="text-align:center; margin-top:80px; color:#444; font-size:12px; border-top:1px solid #111; padding-top:30px;">
-            &copy; 2026 LUXERA STUDIO | ALL RIGHTS RESERVED.
-        </div>
+        <p style="text-align:center; margin-top:80px; color:#333; font-size:12px;">&copy; 2026 LUXERA STUDIO | SYLHET</p>
     </footer>
 
     <script>
-        // মেনু ওপেন/ক্লোজ ফাংশন
-        function toggleMenu() {
-            document.getElementById('sideNav').classList.toggle('active');
+        // মেনু এবং লগইন টগল
+        function toggleMenu() { document.getElementById('sideNav').classList.toggle('active'); }
+        function toggleAuth() { 
+            let m = document.getElementById('authModal');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // ২৪টি প্রোডাক্ট রেন্ডার করা
-        const configs = [
-            { id: 'grid1', prefix: 'PT', color: 'Party' },
-            { id: 'grid2', prefix: 'BR', color: 'Bridal' },
-            { id: 'grid3', prefix: 'SL', color: 'Silk' }
+        // ২৪টি বক্স জেনারেটর
+        const layouts = [
+            { id: 'p1', prefix: 'PT', title: 'Party' },
+            { id: 'p2', prefix: 'BR', title: 'Bridal' },
+            { id: 'p3', prefix: 'SL', title: 'Silk' }
         ];
 
-        configs.forEach(conf => {
-            const container = document.getElementById(conf.id);
-            for(let i=1; i<=8; i++) {
+        layouts.forEach(lay => {
+            let container = document.getElementById(lay.id);
+            for(let i=1; i<=8; i++){
                 container.innerHTML += `
                     <div class="card">
-                        <div class="img-area">IMAGE</div>
-                        <p style="color:red; font-weight:600; font-size:11px;">Code: ${conf.prefix}-${100+i}</p>
-                        <h3 style="font-size:16px; margin:10px 0;">${conf.color} Exclusive ${i}</h3>
-                        <p style="color:#8e6d10; font-weight:700;">৳ 7,500</p>
+                        <div class="img-placeholder">IMAGE</div>
+                        <p style="color:red; font-size:11px; font-weight:600;">CODE: ${lay.prefix}-${100+i}</p>
+                        <h3 style="font-size:16px; margin:8px 0;">Luxera ${lay.title} ${i}</h3>
+                        <p style="color:#8e6d10; font-weight:700;">৳ 9,500</p>
                     </div>
                 `;
             }
         });
 
-        // স্লাইডশো অটো-প্লে
+        // স্লাইডশো লজিক
         let sIdx = 0;
         const slides = document.querySelectorAll('.slide');
         setInterval(() => {
